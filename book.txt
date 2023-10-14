@@ -1,0 +1,8 @@
+11/10/23 - 12/10/23
+tried to connect to gitlab on vscode but couldnt due to computer issues but finally managed to
+
+14/10/23
+1)researched and found out that using flask for backend is the best choice
+2)set up server.py and created a server where it gives me a url and a link
+3)created html file and connected to the server
+4)connected to the database
