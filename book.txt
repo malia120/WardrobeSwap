@@ -6,3 +6,6 @@ tried to connect to gitlab on vscode but couldnt due to computer issues but fina
 2)set up server.py and created a server where it gives me a url and a link
 3)created html file and connected to the server
 4)connected to the database
+
+15/10/23
+1) looked at the file and noticed how disorganised it is and rearranged it to make it look more presentable and less confusing
