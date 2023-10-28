@@ -1,5 +1,7 @@
 11/10/23 - 12/10/23
-tried to connect to gitlab on vscode but couldnt due to computer issues but finally managed to
+1)tried to connect to gitlab on vscode but couldnt due to computer issues 
+2)finally managed to by creating an personal access token and using that as a password instead of my own password.
+3)used vscode clone to clone this into my repository
 
 14/10/23
 1)researched and found out that using flask for backend is the best choice
@@ -8,4 +10,24 @@ tried to connect to gitlab on vscode but couldnt due to computer issues but fina
 4)connected to the database
 
 15/10/23
-1) looked at the file and noticed how disorganised it is and rearranged it to make it look more presentable and less confusing
+1)looked at the file and noticed how disorganised it is and rearranged it to make it look more presentable and less confusing
+2)imported react js frontend and editing the files accordingly and keeping the ones i need
+3)the server.py was no longer working so i created a virtual machine by using  backend\Scripts\activate and installed flask within the virtual machine
+
+16/10/23
+1)errors as it does not run the frontend server. 
+2)this was because my functions in <div> was wrong. when i got rid of it, it worked
+
+18/10/23
+1) rearranged the components in the front and backend - unable to commit due to existing errors
+
+20/10/23
+1) trying to fix the errors caused by installing flask and react - still cannot commit due to existing errors
+
+26/10/23
+1)the issues fixed regarding the installation of flask and react, however the contents on server.py do not display on the webpage
+2)managed to display the contents by hanging the the name of the @app.route to @app.route('/home'). and changing the name of the url to /home - still cannot commit due to existing errors
+
+28/10/23
+1)fixing issue where the contents arent being fetched from backend
+2)got rid of the code that is supposed to fetch backend code and display it on frontend preparing it to commit
