@@ -66,4 +66,6 @@
 13/11/23
 1)fully implemented the navbar and other minor issues with Navbar, and committed the official Navbar
 2)implemented searchbar feature without connecting to the database
+3)when looking into commits, i realised that it says that the commits were committed by 2 people, Maliha Ahmed (anonymous), and Maliha Ahmed ZKAC334 (Uni account). I logged into VSC using microsoft
+4)test submitting book to see if it fixes the submission of Maliha Ahmed (anonymous).
 
