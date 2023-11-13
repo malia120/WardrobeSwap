@@ -29,11 +29,12 @@ nav a {
     margin: 0 2rem;
     color: var(--textColour);
     text-decoration: none;
-    transition: color 0.3s; /* Add a transition for smoother color change */
+    transition: color 0.3s; 
+    font-size: 1.2rem;
 }
 
 nav a:hover {
-    color: var(--secondaryColour); /* Change the color on hover */
+    color: var(--secondaryColour); 
     cursor: pointer;
 }
 
