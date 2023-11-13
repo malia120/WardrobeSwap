@@ -31,3 +31,39 @@
 28/10/23
 1)fixing issue where the contents arent being fetched from backend
 2)got rid of the code that is supposed to fetch backend code and display it on frontend preparing it to commit
+
+02/11/23
+1)could not do much due to other assignments however, researched about how to make the website look presentable
+2)looked into the colour scheme and the type of website
+3)settled for pastel colours
+4)decided on how to make the navigation bar and collected all the materials for after the due of assignments
+
+05/11/23
+1)started implementing the navigation bar
+2)created a new file called Navbar 
+3)error faced, where it mentions "the file is not found in components" while the file is clearly in the componenets 
+
+06/11/23
+1)due to some personal issues, i had to switch devices and finding issues setting up gitlab on new device, therefore, i am also unable to commit (back up on USB)
+
+08/11/23
+1)unable to work on the project due to other coursework
+2)fixed the bug of "file not found", by adding "export function Navbar()"
+
+9/11/23
+1)fixed the issue with gitlab not being able to connect to my IDE
+
+10/11/23
+1)started working on implementing search bar
+2)working on allowing users to search items from the database
+3)resumed working on navbar, which was put on halt due to errors
+4)fixed bugs regarding gitignore and node modules, and committed changes
+
+11/11/23
+1)managed to implement navbar, however a new bug appreared where the page links do not apprear when we click on "more" option
+2)trying to implement the database for the search function, 
+
+13/11/23
+1)fully implemented the navbar and other minor issues with Navbar, and committed the official Navbar
+2)implemented searchbar feature without connecting to the database
+
