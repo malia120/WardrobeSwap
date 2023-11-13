@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {  Navbar  } from "./Components/Navbar";
 import { SearchBar } from "./Components/SearchBar";
+import { Background } from "./Components/Background";
 
 function App() {
   return (
@@ -9,11 +10,12 @@ function App() {
       <div className="App"> 
         <div className="search-bar-holder">
           <SearchBar  />
-        </div>    
+        </div>  
+        <Background />  
       </div>
     </React.Fragment>
   );
-  
+
 }
 
 export default App;

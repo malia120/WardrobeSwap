@@ -6,6 +6,7 @@ export const SearchBar = () => {
     <div className='input-wrapper'>
         <FaSearch id="search-icon"/>
         <input placeholder="Search for items" />
+        <button id="search-button">Search</button>
     </div>
   )
 }
