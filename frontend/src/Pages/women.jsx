@@ -1,0 +1,12 @@
+import React from 'react';
+
+function Women() {
+  return (
+    <div>
+      <h1>Welcome to the Women Page</h1>
+      {/* Add content for the Women page */}
+    </div>
+  );
+}
+
+export default Women;
