@@ -1,6 +1,8 @@
 import React from 'react';
 
-function Women() {
+const Women = () => {
+  console.log("Women component rendered");
+
   return (
     <div>
       <h1>Welcome to the Women Page</h1>

@@ -80,3 +80,5 @@
 2)added a logo 
 3)committed new workplace
 
+27/11/23
+1) maybe changing the function woman to const woman will work
