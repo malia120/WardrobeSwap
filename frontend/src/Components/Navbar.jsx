@@ -13,7 +13,7 @@ export function Navbar() {
 
     return(
         <header> 
-            <img src={require('../Assets/logo.png')} alt="Logo" className="logo"></img>
+            <Link to= "/"><img src={require('../Assets/logo.png')} alt="Logo" className="logo"></img></Link>
             <nav ref={navRef}>
                 <Link to="/women">Women</Link>
                 <Link to="/men">Men</Link>
