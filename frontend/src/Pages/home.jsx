@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import {  Navbar  } from "../Components/Navbar";
+import { SearchBar } from "../Components/SearchBar";
+import { Background } from "../Components/Background";
 
 function Home() {
   return (
-    <div>
-      <h1>Welcome to the Home Page</h1>
-      {/* Add content for the Home page */}
+    <React.Fragment> 
+    <Navbar />
+    <div className="App"> 
+      <div className="search-bar-holder">
+        <SearchBar  />
+      </div>  
+      <Background />  
     </div>
+    </React.Fragment> 
+
   );
 }
 

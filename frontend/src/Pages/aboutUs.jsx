@@ -2,8 +2,8 @@ import React from 'react';
 import {  Navbar  } from "../Components/Navbar";
 import { SearchBar } from "../Components/SearchBar";
 
-function Men() {
-    return (
+function AboutUs() {
+  return (
       <React.Fragment> 
         <Navbar />
         <div className="App"> 
@@ -12,12 +12,12 @@ function Men() {
           </div>  
         </div>
       <div>
-        <h1>Welcome to the Men Page</h1>
-        {/* Add content for the Men page */}
+        <h1>Welcome to the AboutUs Page</h1>
+        {/* Add content for the Women page */}
       </div>
       
       </React.Fragment>
-    );
+  );
 }
 
-export default Men;
+export default AboutUs;

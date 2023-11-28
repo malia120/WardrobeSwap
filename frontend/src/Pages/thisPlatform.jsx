@@ -2,9 +2,7 @@ import React from 'react';
 import {  Navbar  } from "../Components/Navbar";
 import { SearchBar } from "../Components/SearchBar";
 
-function Women() {
-  console.log("Women component rendered");
-
+function ThisPlatform() {
   return (
     <React.Fragment> 
       <Navbar />
@@ -14,12 +12,12 @@ function Women() {
         </div>  
       </div>
     <div>
-      <h1>Welcome to the Women Page</h1>
-      {/* Add content for the Women page */}
+      <h1>Welcome to the This Platform Page</h1>
+      {/* Add content for the This Platform page */}
     </div>
     
     </React.Fragment>
   );
 }
 
-export default Women;
+export default ThisPlatform;
