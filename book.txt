@@ -81,5 +81,6 @@
 3)committed new workplace
 
 27/11/23
-1) maybe changing the function woman to const woman will work
-2) 
+1) The navigation wasnt working. it kept showing You cannot render a <Router> inside another <Router>. You should never have more than one in your app.
+2) removed BrowserRouter
+3) navigation works
