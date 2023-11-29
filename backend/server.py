@@ -1,13 +1,21 @@
-from flask import Flask, render_template, redirect, url_for
-#from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
+from flask_cors import CORS
+
+
 app = Flask(__name__) 
-#template_folder="WardrobeSwap/frontend/src")
-#db = SQLAlchemy(app)
-#app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
+CORS(app) 
 
 @app.route('/')
 def home():
     return "This is my backend code"
+
+@app.route('/api', methods=['GET'])
+def api():
+    return ({
+        'userID': 1,
+        'title': 'Your clothes',
+        'completed': False
+    })
 
 if __name__ == "__main__": 
     app.run(debug = True)

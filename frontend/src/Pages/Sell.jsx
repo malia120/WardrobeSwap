@@ -10,12 +10,12 @@ function Sell() {
           <div className="search-bar-holder">
             <SearchBar  />
           </div>  
-        </div>
-      <div>
+          <div>
         <h1>Sell your item</h1>
         {/* A Form */}
       </div>
-      
+        </div>
+        
       </React.Fragment>
     );
 }

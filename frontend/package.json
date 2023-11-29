@@ -15,6 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-flask-api": "cd backend && start python server.py",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -36,5 +37,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  },
+  "proxy": "http://127.0.0.1:5000"
 }
