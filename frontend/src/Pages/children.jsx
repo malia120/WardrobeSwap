@@ -10,11 +10,10 @@ function Children() {
         <div className="search-bar-holder">
           <SearchBar  />
         </div>  
-      </div>
-    <div>
+        <div>
       <h1>Welcome to the Children Page</h1>
-      {/* Add content for the Children page */}
     </div>
+      </div>
     
     </React.Fragment>
   );

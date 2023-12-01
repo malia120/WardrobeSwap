@@ -8,17 +8,7 @@ import ThisPlatform from "./Pages/thisPlatform";
 import Home from "./Pages/home";
 import Sell from "./Pages/sell";
 
-const server = 'http://127.0.0.1:5000';
-
 function App() {
-  const [initialData, setInitialData] = useState({});
-
-  useEffect(()=>{
-    fetch(server + '/api').then(
-      response => response.json())
-    .then(data => setInitialData(data))
-    .catch(error => console.error("Error fetching data:", error, error.message, error.stack))
-  }, []);
 
   return (
     <React.Fragment> 
@@ -31,9 +21,6 @@ function App() {
         <Route path="/this-platform" element={<ThisPlatform />} />
         <Route path="/sell" element={<Sell />} />
       </Routes>
-      <div className="App">
-        <h1>{(initialData.title)}</h1>
-      </div>  
     </React.Fragment>
   );
 

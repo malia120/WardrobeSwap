@@ -10,11 +10,11 @@ function ThisPlatform() {
         <div className="search-bar-holder">
           <SearchBar  />
         </div>  
+        <div>
+          <h1>Let me tell you more about our platform...</h1>
+        </div>
       </div>
-    <div>
-      <h1>Welcome to the This Platform Page</h1>
-      {/* Add content for the This Platform page */}
-    </div>
+    
     
     </React.Fragment>
   );

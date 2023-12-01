@@ -10,11 +10,11 @@ function Men() {
           <div className="search-bar-holder">
             <SearchBar  />
           </div>  
-        </div>
-      <div>
+          <div>
         <h1>Welcome to the Men Page</h1>
-        {/* Add content for the Men page */}
       </div>
+        </div>
+      
       
       </React.Fragment>
     );

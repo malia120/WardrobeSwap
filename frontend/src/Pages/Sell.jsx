@@ -1,6 +1,7 @@
 import React from 'react';
 import {  Navbar  } from "../Components/Navbar";
 import { SearchBar } from "../Components/SearchBar";
+import  Form from "../Components/Form";
 
 function Sell() {
     return (
@@ -11,9 +12,9 @@ function Sell() {
             <SearchBar  />
           </div>  
           <div>
-        <h1>Sell your item</h1>
-        {/* A Form */}
-      </div>
+            <h1>Sell your item</h1>
+          </div>
+          <Form />
         </div>
         
       </React.Fragment>

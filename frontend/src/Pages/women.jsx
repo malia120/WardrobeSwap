@@ -12,11 +12,11 @@ function Women() {
         <div className="search-bar-holder">
           <SearchBar  />
         </div>  
-      </div>
-    <div>
+        <div>
       <h1>Welcome to the Women Page</h1>
-      {/* Add content for the Women page */}
-    </div>
+        </div>
+      </div>
+    
     
     </React.Fragment>
   );

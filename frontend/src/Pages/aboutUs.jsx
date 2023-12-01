@@ -10,11 +10,10 @@ function AboutUs() {
           <div className="search-bar-holder">
             <SearchBar  />
           </div>  
+          <div>
+            <h1>Here is a litte more about us:</h1>
+          </div>
         </div>
-      <div>
-        <h1>Welcome to the AboutUs Page</h1>
-        {/* Add content for the Women page */}
-      </div>
       
       </React.Fragment>
   );
