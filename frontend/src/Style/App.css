@@ -213,29 +213,51 @@ video {
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-.formInput{
-
-    display:flex;
+.formInput {
+    display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
+    background-color: #E8DFE0;
+    padding: 20px;
+    margin: 20px; 
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .formGroup {
     margin-bottom: 15px;
-  }
-  
-label {
-    display: block;
-    margin-bottom: 5px;
-  }
+}
 
-input{
+.formGroup label {
+    margin-right: 10px; 
+    font-weight: bold; 
+    color: #333; 
+}
+
+
+.formGroup input {
     background-color: #FFFFFF;
     width: 100%;
     border-radius: 10px;
     height: 3.5rem;
-    padding: 0 15px;
+    padding: 15px;
     display: flex;
     align-items: center;
 }
+
+.sell-heading {
+    text-align: center;
+    margin-bottom: 20px; /* Adjust margin as needed */
+    font-family: 'Roboto', sans-serif;
+    color: #59351a;
+}
+
+.form-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
