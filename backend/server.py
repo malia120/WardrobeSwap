@@ -28,25 +28,24 @@ class Listing(db.Model):
 def home():
     return "This is my backend code"
 
-@app.route('/api', methods=['GET'])
-def api():
-    all_listing = Listing.query.all()
-    list_listing = []
-    for item in all_listing:
-       list_listing.append ({
-        'id': item.id,
-        'title': item.title,
-        'description': item.description,
-        'category': item.category,
-        'price': item.price,
-        'completed': item.completed,
-    })
-    return {'listings': list_listing}
+@app.route('/api', methods=['GET', 'POST'])
+def Api():
+    if request.method == 'GET':
+        all_listing = Listing.query.all()
+        list_listing = []
+        for item in all_listing:
+            list_listing.append ({
+            'id': item.id,
+            'title': item.title,
+            'description': item.description,
+            'category': item.category,
+            'price': item.price,
+            'completed': item.completed,
+        })
+        return {'listings': list_listing}
 
-@app.route('/api', methods=['POST'])
-def api():
-    if request.method == 'POST':
-        data = request.form
+    elif request.method == 'POST':
+        data = request.get_json()
         new_listing = Listing(
             title=data.get('Title'),
             description=data.get('Description'),
@@ -55,6 +54,7 @@ def api():
         )
         db.session.add(new_listing)
         db.session.commit()
+        return jsonify({'Listing added'}), 201
 
 if __name__ == "__main__":
     with app.app_context():
