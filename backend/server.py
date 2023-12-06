@@ -43,6 +43,19 @@ def api():
     })
     return {'listings': list_listing}
 
+@app.route('/api', methods=['POST'])
+def api():
+    if request.method == 'POST':
+        data = request.form
+        new_listing = Listing(
+            title=data.get('Title'),
+            description=data.get('Description'),
+            category=data.get('Category'),
+            price=data.get('Price')
+        )
+        db.session.add(new_listing)
+        db.session.commit()
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
