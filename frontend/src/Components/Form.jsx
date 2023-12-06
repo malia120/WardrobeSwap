@@ -6,11 +6,27 @@ function Form() {
     const [Text, setText] = useState("");
     console.log(Text);
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const data =  new FormData(e.target)
-        console.log(Object.fromEntries(data.entries()))
-    };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        const formData = new FormData(e.target);
+    
+        try {
+          const response = await fetch("http://127.0.0.1:5000/api", {
+            method: "POST",
+            body: formData,
+          });
+    
+          if (response.ok) {
+            console.log("Data submitted successfully");
+          } else {
+            console.error("Failed to submit data");
+          }
+        } catch (error) {
+          console.error("Error submitting data:", error);
+        }
+      };
+
     
     return (
         <React.Fragment>

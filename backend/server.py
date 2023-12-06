@@ -35,17 +35,17 @@ def Api():
         list_listing = []
         for item in all_listing:
             list_listing.append ({
-            'id': item.id,
-            'title': item.title,
-            'description': item.description,
-            'category': item.category,
-            'price': item.price,
-            'completed': item.completed,
+                'id': item.id,
+                'title': item.title,
+                'description': item.description,
+                'category': item.category,
+                'price': item.price,
+                'completed': item.completed,
         })
         return {'listings': list_listing}
 
     elif request.method == 'POST':
-        data = request.get_json()
+        data = request.form
         new_listing = Listing(
             title=data.get('Title'),
             description=data.get('Description'),
@@ -54,7 +54,7 @@ def Api():
         )
         db.session.add(new_listing)
         db.session.commit()
-        return jsonify({'Listing added'}), 201
+        return jsonify({'message': 'Listing added successfully'}), 201
 
 if __name__ == "__main__":
     with app.app_context():
