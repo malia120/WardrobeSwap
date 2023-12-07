@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {  Navbar  } from "../Components/Navbar";
 import { SearchBar } from "../Components/SearchBar";
 import { Background } from "../Components/Background";
-import { Card } from "../Components/Card";
+import { ShowListing } from "../Components/ShowListing";
 
 const server = 'http://127.0.0.1:5000';
 
@@ -15,8 +15,9 @@ function Home() {
         <SearchBar  />
       </div>  
       <Background />  
+      <ShowListing />
     </div>
-    <Card />
+    
     </React.Fragment> 
 
   );

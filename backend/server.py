@@ -18,11 +18,10 @@ class Listing(db.Model):
     description = db.Column(db.String(255), nullable=False)
     category = db.Column(db.String(50), nullable=False)
     price = db.Column(db.String(10), nullable=False)
-    completed = db.Column(db.Boolean, default=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
-    def __repr__(self):
-        return '<Title %r>' % self.id
+def __repr__(self):
+    return '<Title %r>' % self.id
 
 @app.route('/')
 def home():
@@ -40,7 +39,8 @@ def Api():
                 'description': item.description,
                 'category': item.category,
                 'price': item.price,
-                'completed': item.completed,
+                'date_created': item.date_created.strftime('%Y-%m-%d %H:%M:%S')
+
         })
         return {'listings': list_listing}
 
@@ -50,7 +50,8 @@ def Api():
             title=data.get('Title'),
             description=data.get('Description'),
             category=data.get('Category'),
-            price=data.get('Price')
+            price=data.get('Price'),
+            date_created=data.get('Date_Created')
         )
         db.session.add(new_listing)
         db.session.commit()

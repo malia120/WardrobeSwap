@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom"; 
 import "../Style/App.css";
 
 function Form() {
 
     const [Text, setText] = useState("");
+    const [submitted, setSubmitted] = useState(false); 
+    const navigate = useNavigate();
     console.log(Text);
 
     const handleSubmit = async (e) => {
@@ -19,6 +22,7 @@ function Form() {
     
           if (response.ok) {
             console.log("Data submitted successfully");
+            setSubmitted(true);
           } else {
             console.error("Failed to submit data");
           }
@@ -26,6 +30,15 @@ function Form() {
           console.error("Error submitting data:", error);
         }
       };
+
+      if (submitted) {
+        return (
+          <div className="FormSubmit">
+            <p>Thank you for submitting. Click here to return home.</p>
+            <button onClick={() => navigate("/")}>Return Home</button>
+          </div>
+        );
+      }
 
     
     return (
@@ -52,7 +65,7 @@ function Form() {
                     <label>Upload your image</label>
                     <input name="Image" placeholder="Upload here"/>
                 </div>
-                <button>Submit</button>
+                <button id="Submit-button">Submit</button>
             </div>
         </form>
         </React.Fragment>
