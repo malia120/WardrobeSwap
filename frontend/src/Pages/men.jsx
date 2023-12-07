@@ -23,9 +23,11 @@ function Men() {
         <div className="search-bar-holder">
           <SearchBar  />
         </div>  
-        <div>
-      <h1>Welcome to the Men Page</h1>
-      </div>
+        <div className="form-container">
+        <div className="sell-heading">
+            <h1>Welcome to the Men's section</h1>
+        </div>
+        </div>
       <div className='Card'>
         {menItems.map(item => (
           <div key={item.id} className="Cardview">

@@ -23,8 +23,10 @@ function Women() {
         <div className="search-bar-holder">
           <SearchBar  />
         </div>  
-        <div>
-      <h1>Welcome to the Women Page</h1>
+        <div className="form-container">
+        <div className="sell-heading">
+            <h1>Welcome to the Women's section</h1>
+        </div>
         </div>
       <div className='Card'>
         {womenItems.map(item => (

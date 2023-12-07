@@ -23,9 +23,11 @@ function Children() {
         <div className="search-bar-holder">
           <SearchBar  />
         </div>  
-        <div>
-      <h1>Welcome to the Children's Page</h1>
-      </div>
+        <div className="form-container">
+        <div className="sell-heading">
+            <h1>Welcome to the Children's section</h1>
+        </div>
+        </div>
       <div className='Card'>
         {childrenItems.map(item => (
           <div key={item.id} className="Cardview">
