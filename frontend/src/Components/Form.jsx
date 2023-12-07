@@ -61,9 +61,9 @@ function Form() {
                     <option value="" disabled hidden>
                       Select a category
                     </option>
-                    <option value="woman">Woman</option>
-                    <option value="men">Men</option>
-                    <option value="children">Children</option>
+                    <option value="Women">Women</option>
+                    <option value="Men">Men</option>
+                    <option value="Children">Children</option>
                   </select>
                 </div>
                 <div className="formGroup">
