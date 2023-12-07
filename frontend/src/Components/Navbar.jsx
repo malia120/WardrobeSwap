@@ -3,9 +3,25 @@ import {FaBars, FaTimes} from "react-icons/fa"
 import { Link } from "react-router-dom";
 import "../Style/App.css";
 
+/**
+ * Component showing the navigation bar of the website.
+ * Uses React imports for useRef for accessing the navigation aspects 
+ * to toggle its responsiveness.
+ *
+ * @returns  navigation bar components.
+ */
+
 
 export function Navbar() {
+    // useRef to access the navigation element
+
     const navRef = useRef();
+
+     /**
+     * Toggles the responsiveness of the navigation bar by adding or removing the "responsive_nav" class.
+     * 
+     * @function
+     */
 
     const showNavBar = () => {
         navRef.current.classList.toggle("responsive_nav");

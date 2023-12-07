@@ -2,12 +2,25 @@ import React, {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom"; 
 import "../Style/App.css";
 
+/**
+ * Component showing a form for listing data.
+ * Uses React imports for managing form and submission.
+ *
+ * @returns  form components.
+ */
+
 function Form() {
 
     const [Text, setText] = useState("");
     const [submitted, setSubmitted] = useState(false); 
     const navigate = useNavigate();
     console.log(Text);
+
+     /**
+     * Handles submitted data by sending data to the server.
+     *
+     * @param {Event} e - The form submitted event.
+     */
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,6 +44,15 @@ function Form() {
         }
       };
 
+      /**
+     * Shows a thank you message and a button below it to return back home
+     * done after form submission is successfull.
+     * 
+     * @condition submitted - Shows whether the form has been submitted.
+     * 
+     * 
+     */
+
       if (submitted) {
         return (
           <div className="FormSubmit">
@@ -40,6 +62,10 @@ function Form() {
         );
       }
 
+    /**
+     * shows the form for inputting data.
+     *
+     */
     
     return (
         <React.Fragment>

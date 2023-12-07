@@ -2,8 +2,17 @@ import React, { useState, useEffect } from "react";
 import "../Style/App.css";
 const server = 'http://127.0.0.1:5000';
 
+/**
+ * Component that shows listings fetched from the server.
+ * Uses React inputs for UseState and useEffect for fetching data from the database.
+ *
+ * @returns  show listing components.
+ */
+
 
 export function ShowListing() {
+  // Storing initial data fetched from the server
+
     const [initialData, setInitialData] = useState([]);
     useEffect(()=>{
       fetch(server + '/api').then(

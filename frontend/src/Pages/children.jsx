@@ -3,10 +3,21 @@ import {  Navbar  } from "../Components/Navbar";
 import { SearchBar } from "../Components/SearchBar";
 const server = 'http://127.0.0.1:5000';
 
+/**
+ * Page that shows the Children's section of the Web page.
+ * Fetches data from the database, filters it so that it only shows Children's items, 
+ * and renders the item.
+ *
+ * 
+ * @returns  Children components.
+
+ */
 function Children() {
   console.log("Children component rendered");
+  // State to store the initial data fetched from the server
   const [initialData, setInitialData] = useState([]);
 
+  // Fetch the data from the database 
   useEffect(() => {
     fetch(server + '/api')
       .then(response => response.json())
@@ -14,6 +25,7 @@ function Children() {
       .catch(error => console.error("Error fetching data:", error, error.message, error.stack));
   }, []);
 
+  // Filter items to show in only Children's page
   const childrenItems = initialData.filter(item => item.category === "Children");
 
   return (

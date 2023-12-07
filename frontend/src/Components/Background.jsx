@@ -2,6 +2,13 @@ import React from 'react'
 import BGvideo from '../Assets/Background.mp4'
 import { Link } from 'react-router-dom';
 
+/**
+ * Component showing the background section of the application.
+ * Displays a background video with the sell button on top of it.
+ *
+ * @returns  background components.
+ */
+
 export const Background = () => {
     return (
         <div className="Background">

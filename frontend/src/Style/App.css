@@ -1,12 +1,23 @@
+/**
+ * Styles for the whole website.
+ */
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,400&display=swap');
+
+/**
+ * Styles for HTML elements.
+ */
 
 * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;  /* go back to sans-serif if Roboto doesnt load */
 }
 
+/**
+ * variable defined for color scheme.
+ */
 :root {
     --mainColour: #DAB692;
     --mainColourLight: #E8DFE0;
@@ -14,10 +25,16 @@
     --textColour: #FFFFFF;
 }
 
+/**
+ * Logo styles.
+ */
+
 .logo {
     width: 150px; 
     height: 50px; 
 }
+
+/* Header styles */
 
 header {
     display: flex;
@@ -29,6 +46,9 @@ header {
     color: var(--textColour);
 }
 
+/**
+ * Navigation styles.
+ */
 nav a {
     margin: 0 2rem;
     color: var(--textColour);
@@ -42,6 +62,9 @@ nav a:hover {
     cursor: pointer;
 }
 
+/**
+ * Responsive design.
+ */
 
 @media only screen and (min-width: 1025px) {
     header .nav-button {
@@ -96,11 +119,19 @@ nav a:hover {
     }
 }
 
+/**
+ * background styles for the entire website.
+ */
+
 .App{
     background-color: #E8DFE0;
     height: 100vh;
     width: 100vw;
 }
+
+/**
+ * search bar holder styles.
+ */
 
 .search-bar-holder {
     padding-top: 1vh;
@@ -111,6 +142,10 @@ nav a:hover {
     align-items: center;
     min-width: 200px;
 }
+
+/**
+ * Search bar input wrapper styles.
+ */
 
 .input-wrapper {
     background-color: #FFFFFF;
@@ -123,6 +158,10 @@ nav a:hover {
     align-items: center;
 }
 
+/**
+ * Search bar input styles.
+ */
+
 input {
     background-color: transparent;
     border: none;
@@ -132,14 +171,26 @@ input {
     margin-left: 5px;
 }
 
+/**
+ * Focus Search bar input styles.
+ */
+
 input:focus {
     outline: none;
 
 }
 
+/**
+ * Search bar icon styles.
+ */
+
 #search-icon {
     color: #8f5b34;
 }
+
+/**
+ * Search button styles.
+ */
 
 #search-button {
     background-color: var(--mainColour);
@@ -156,17 +207,28 @@ input:focus {
     background-color: var(--secondaryColour);
 }
 
+/**
+ * Background componenent styles.
+ */
+
 .Background {
     padding-top: 1vh;
     width: 100%;
     height: 100%;
 }
 
+/**
+ * Background video style.
+ */
+
 video {
     width: 100%;
     height: 70%;
     object-fit: cover;
 }
+/**
+ * Background wrapper style.
+ */
 
 .bg-wrapper {
     background-color: #FFFFFF;
@@ -179,6 +241,9 @@ video {
     align-items: center;
 }
 
+/**
+ * Content inside the background component Style.
+ */
 .content {
     position: absolute;
     top: 50%;
@@ -188,6 +253,10 @@ video {
     color: #FFFFFF;
     font-size: 1.5rem;
   }
+
+/**
+ * "Sell Now" button style.
+ */
 
 #Sell-button {
     background-color: var(--mainColour);
@@ -205,6 +274,10 @@ video {
     background-color: var(--secondaryColour);
 }
 
+/**
+ * Dark overlay on the background style.
+ */
+
 .BGdim {
     position: absolute;
     padding-top: 1vh;
@@ -212,6 +285,10 @@ video {
     height: 70%;
     background-color: rgba(0, 0, 0, 0.3);
 }
+
+/**
+ * Form input container style.
+ */
 
 .formInput {
     display: flex;
@@ -225,6 +302,9 @@ video {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/**
+ * Form input groups style.
+ */
 .formGroup {
     margin-bottom: 15px;
 }
@@ -235,6 +315,9 @@ video {
     color: #333; 
 }
 
+/**
+ * form input style.
+ */
 
 .formGroup input {
     background-color: #FFFFFF;
@@ -246,10 +329,17 @@ video {
     align-items: center;
 }
 
+/**
+ * Category label style.
+ */ 
+
 #category {
     margin-left: -30px;
 }
 
+/**
+ * Category select dropdown style.
+ */
 
 .formGroup select {
     background-color: #FFFFFF;
@@ -269,17 +359,28 @@ video {
     outline: none;
 }
 
+/**
+ * pptions inside the category select dropdown style.  
+ */
+
 .formGroup option {
     font-size: 1.25rem;
     color: #333;
 }
 
+/**
+ * heading in the "Sell" component style.
+ */
 .sell-heading {
     text-align: center;
     margin-bottom: 20px; 
     font-family: 'Roboto', sans-serif;
     color: #59351a;
 }
+
+/**
+ * Form container style.
+ */
 
 .form-container {
     background-color: white;
@@ -289,10 +390,18 @@ video {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/**
+ * Listing cards containers style.
+ */
+
 .Card {
     display: flex;
     flex-wrap: wrap;
 }
+
+/**
+ * Individual cards style.
+ */
   
 .Cardview {
 background-color: white;
@@ -307,10 +416,18 @@ transform: translateY(-0.5rem);
 box-shadow: 0.5rem 0.75rem 1.5rem #bbbbbb;
 }
 
+/**
+ * images inside cards style.
+ */
+
 .Card img {
 width: 100%;
 height: auto;
 }
+
+/**
+ * information inside cards style.
+ */
 
 .Card_info {
 padding: 16px;
@@ -321,10 +438,18 @@ font-size: 18px;
 margin-bottom: 8px;
 }
 
+/**
+ * display flex container inside cards style.
+ */
+
 .display {
 display: flex;
 flex-direction: column;
 }
+
+/**
+ * Category, price, and date inside cards style.
+ */
 
 .Card_Category,
 .Card_price,
@@ -335,9 +460,16 @@ margin-top: 8px;
 color: #777;
 }
 
+/**
+ * Description inside cards style.
+ */
 .Card_description {
 margin-top: 8px;
 }
+
+/**
+ * "Submit" button style.
+ */
 
 #Submit-button {
 background-color: var(--mainColour); 
@@ -356,6 +488,9 @@ transition: background-color 0.3s;
     background-color: var(--secondaryColour);
 }
 
+/**
+ * Form submission confirm container style.
+ */
 
 .FormSubmit {
 display: flex;
@@ -369,11 +504,19 @@ border-radius: 10px;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/**
+ * Success message inside the form submission style.
+ */
+
 .FormSubmit p {
 font-size: 1.5rem;
 margin-bottom: 20px;
 color: #59351a; 
 }
+
+/**
+ * "Return Home" button inside the form submission container style.
+ */
 
 .FormSubmit button {
 background-color: var(--mainColour); 

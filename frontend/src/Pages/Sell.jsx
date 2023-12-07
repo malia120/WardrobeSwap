@@ -3,6 +3,12 @@ import {  Navbar  } from "../Components/Navbar";
 import { SearchBar } from "../Components/SearchBar";
 import  Form from "../Components/Form";
 
+/**
+ * Page that shows the Sell page of the website.
+ *
+ * @returns  Sell components.
+ */
+
 function Sell() {
     return (
       <React.Fragment> 

@@ -13,6 +13,17 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db =SQLAlchemy(app)
 
 class Listing(db.Model):
+    """
+    Represents a listing in the application.
+
+    Attributes:
+    - id (int): The unique primary key for the listing.
+    - title (str): The title of the listing.
+    - description (str): The description of the listing.
+    - category (str): The category to which the listing belongs.
+    - price (str): The price associated with the listing.
+    - date_created (datetime): The timestamp indicating when the listing was created.
+    """
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(255), nullable=False)
@@ -25,10 +36,30 @@ def __repr__(self):
 
 @app.route('/')
 def home():
-    return "This is my backend code"
+    """
+    Returns a simple message showing that the user has reached default page.
+
+    Returns:
+    str: A message showing the user how to view the database.
+    """
+    return "enter /api after the link to see all the items in the database"
 
 @app.route('/api', methods=['GET', 'POST'])
 def Api():
+
+    """
+    Handles GET and POST requests for the '/api'.
+
+    GET Request:
+    Returns an object that has all the information about the listings.
+
+    POST Request:
+    Adds a new listing on the data provided in the sell form.
+
+    Returns:
+    - GET Request: JSON object with a list of all listings.
+    - POST Request: JSON object with a confirmation message.
+    """
     if request.method == 'GET':
         all_listing = Listing.query.all()
         list_listing = []

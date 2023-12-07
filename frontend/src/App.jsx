@@ -8,6 +8,12 @@ import ThisPlatform from "./Pages/thisPlatform";
 import Home from "./Pages/home";
 import Sell from "./Pages/sell";
 
+/**
+ * Main App component that sets up the routing for different pages.
+ *
+ * @returns root components.
+ */
+
 function App() {
 
   return (

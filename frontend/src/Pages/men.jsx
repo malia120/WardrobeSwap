@@ -3,10 +3,21 @@ import {  Navbar  } from "../Components/Navbar";
 import { SearchBar } from "../Components/SearchBar";
 const server = 'http://127.0.0.1:5000';
 
+/**
+ * Page that shows the Mens's section of the Web page.
+ * Fetches data from the database, filters it so that it only shows Mens's items, 
+ * and renders the item.
+ *
+ * @returns  Men components.
+
+ */
+
 function Men() {
   console.log("Men component rendered");
+  // State to store the initial data fetched from the server
   const [initialData, setInitialData] = useState([]);
 
+  // Fetch the data from the database 
   useEffect(() => {
     fetch(server + '/api')
       .then(response => response.json())
@@ -14,6 +25,7 @@ function Men() {
       .catch(error => console.error("Error fetching data:", error, error.message, error.stack));
   }, []);
 
+  // Filter items to show in only Men's page
   const menItems = initialData.filter(item => item.category === "Men");
 
   return (
