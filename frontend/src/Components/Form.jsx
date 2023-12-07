@@ -54,8 +54,17 @@ function Form() {
                     <input name="Description" placeholder="Enter your description here"/>
                 </div>
                 <div className="formGroup">
+                  <div id="category">
                     <label>Category</label>
-                    <input name="Category" placeholder="Select a category"/>
+                    </div>
+                    <select name="Category" defaultValue="">  
+                    <option value="" disabled hidden>
+                      Select a category
+                    </option>
+                    <option value="woman">Woman</option>
+                    <option value="men">Men</option>
+                    <option value="children">Children</option>
+                  </select>
                 </div>
                 <div className="formGroup">
                     <label>Price</label>

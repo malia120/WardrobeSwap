@@ -246,9 +246,37 @@ video {
     align-items: center;
 }
 
+#category {
+    margin-left: -30px;
+}
+
+
+.formGroup select {
+    background-color: #FFFFFF;
+    width: 130%;
+    border-radius: 10px;
+    height: 3.5rem;
+    padding: 15px;
+    display: flex;
+    margin-top: 8px; 
+    margin-left: -12%;
+    font-size: 1.25rem; 
+    border: 1px solid #ccc;
+    color: #75758B;
+}
+
+.formGroup select:focus {
+    outline: none;
+}
+
+.formGroup option {
+    font-size: 1.25rem;
+    color: #333;
+}
+
 .sell-heading {
     text-align: center;
-    margin-bottom: 20px; /* Adjust margin as needed */
+    margin-bottom: 20px; 
     font-family: 'Roboto', sans-serif;
     color: #59351a;
 }
@@ -270,7 +298,7 @@ video {
 border: 1px solid #ccc;
 margin: 10px;
 padding: 10px;
-width: 300px; /* Adjust the width as needed */
+width: 300px; 
 }
 
 .Cardview:hover{
@@ -333,7 +361,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 height: 100vh;
-background-color: var(--mainColourLight); /* Set the background color to a lighter shade */
+background-color: var(--mainColourLight);
 padding: 20px;
 margin: 20px;
 border-radius: 10px;
