@@ -17,7 +17,6 @@ function Home() {
       <Background />  
       <ShowListing />
     </div>
-    
     </React.Fragment> 
 
   );

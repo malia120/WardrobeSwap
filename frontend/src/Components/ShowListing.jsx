@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../Style/App.css";
 const server = 'http://127.0.0.1:5000';
 
 
