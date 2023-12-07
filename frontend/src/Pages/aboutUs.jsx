@@ -10,9 +10,11 @@ function AboutUs() {
           <div className="search-bar-holder">
             <SearchBar  />
           </div>  
-          <div>
+          <div className="form-container">
+        <div className="sell-heading">
             <h1>Here is a litte more about us:</h1>
-          </div>
+        </div>
+        </div>
         </div>
       
       </React.Fragment>

@@ -10,8 +10,10 @@ function ThisPlatform() {
         <div className="search-bar-holder">
           <SearchBar  />
         </div>  
-        <div>
-          <h1>Let me tell you more about our platform...</h1>
+        <div className="form-container">
+        <div className="sell-heading">
+            <h1>Let me tell you more about our platform...</h1>
+        </div>
         </div>
       </div>
     
