@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom"; 
 import "../Style/App.css";
+import Image from "./Image";
 
 /**
  * Component showing a form for listing data.
@@ -97,8 +98,8 @@ function Form() {
                     <input name="Price" placeholder="£0.00"/>
                 </div>
                 <div className="formGroup">
-                    <label>Upload your image</label>
-                    <input name="Image" placeholder="Upload here"/>
+                  <label>Image</label>
+                    <Image  />
                 </div>
                 <button id="Submit-button">Submit</button>
             </div>

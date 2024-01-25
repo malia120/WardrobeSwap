@@ -82,14 +82,26 @@
 
 27/11/23
 1) The navigation wasnt working. it kept showing You cannot render a <Router> inside another <Router>. You should never have more than one in your app.
-2) removed BrowserRouter
-3) navigation works
+2) removed BrowserRouter, and the navigation works
+3)made it so that when the logo is pressed its redirected to the home page
 
 28/11/23
-1)connected to the frontend to the backend
+1)connected to the frontend to the backend, so that the port to fetching and posting data is open
+2)implemented the GET and POST method
 
 29/11/23
-1) made the database- issues with the database
+1) Attempting to create database using  db.create_all(), however there are some issues regarding python on recognising the error
+
+30/11/23
+1)created a form in the sell option
+2)refined all the pages so that it looks more organised
 
 2/12/23
-1) fixed a few errors regarding the database
+1) Successfully created the database
+
+3/12/23
+1) successfully posted the data from the form into the server,
+
+6/12/23 - 7/12/23
+1)managed to implement a filter the listing by category
+2)committed everything

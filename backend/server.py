@@ -29,6 +29,7 @@ class Listing(db.Model):
     description = db.Column(db.String(255), nullable=False)
     category = db.Column(db.String(50), nullable=False)
     price = db.Column(db.String(10), nullable=False)
+    image = db.Column(db.String(255), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
 def __repr__(self):
@@ -70,18 +71,20 @@ def Api():
                 'description': item.description,
                 'category': item.category,
                 'price': item.price,
+                'image': item.image,
                 'date_created': item.date_created.strftime('%Y-%m-%d %H:%M:%S')
 
         })
         return {'listings': list_listing}
 
     elif request.method == 'POST':
-        data = request.form
+        data = request.form 
         new_listing = Listing(
             title=data.get('Title'),
             description=data.get('Description'),
             category=data.get('Category'),
             price=data.get('Price'),
+            image=data.get('Image'),
             date_created=data.get('Date_Created')
         )
         db.session.add(new_listing)

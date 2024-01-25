@@ -23,5 +23,7 @@ export const Background = () => {
           </div>
         </div>
       </div>
-  );  
+ 
+ 
+ );  
 }
