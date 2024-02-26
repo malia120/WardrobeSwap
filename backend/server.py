@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from datetime import datetime
+from flask_migrate import Migrate
 
 
 app = Flask(__name__) 
@@ -11,6 +12,7 @@ CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///listing.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db =SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 class Listing(db.Model):
     """
@@ -76,7 +78,6 @@ def Api():
 
         })
         return {'listings': list_listing}
-
     elif request.method == 'POST':
         data = request.form 
         new_listing = Listing(
@@ -85,14 +86,12 @@ def Api():
             category=data.get('Category'),
             price=data.get('Price'),
             image=data.get('Image'),
-            date_created=data.get('Date_Created')
+            date_created=datetime.utcnow()
         )
         db.session.add(new_listing)
         db.session.commit()
         return jsonify({'message': 'Listing added successfully'}), 201
 
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)
     
