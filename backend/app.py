@@ -4,14 +4,13 @@ from flask_cors import CORS
 from datetime import datetime
 from flask_migrate import Migrate
 
-
 app = Flask(__name__) 
 CORS(app) 
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///listing.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db =SQLAlchemy(app)
+db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 class Listing(db.Model):
@@ -34,8 +33,8 @@ class Listing(db.Model):
     image = db.Column(db.String(255), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
-def __repr__(self):
-    return '<Title %r>' % self.id
+    def __repr__(self):
+        return '<Title %r>' % self.id
 
 @app.route('/')
 def home():
