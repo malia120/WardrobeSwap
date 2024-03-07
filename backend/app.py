@@ -5,7 +5,8 @@ from datetime import datetime
 from flask_migrate import Migrate
 
 app = Flask(__name__) 
-CORS(app) 
+
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///listing.db'
@@ -45,6 +46,7 @@ def home():
     str: A message showing the user how to view the database.
     """
     return "enter /api after the link to see all the items in the database"
+
 
 @app.route('/api', methods=['GET', 'POST'])
 def Api():
