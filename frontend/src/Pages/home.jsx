@@ -4,6 +4,7 @@ import { SearchBar } from "../Components/SearchBar";
 import { Background } from "../Components/Background"
 import { ShowListing } from "../Components/ShowListing";
 
+
 /**
  * Page that shows the Home page of the website.
  *
