@@ -9,7 +9,7 @@ import  Form from "../Components/Form";
  * @returns  Sell components.
  */
 
-function sell() {
+function Sell() {
     return (
       <React.Fragment> 
         <Navbar />
@@ -28,4 +28,4 @@ function sell() {
     );
 }
 
-export default sell;
+export default Sell;

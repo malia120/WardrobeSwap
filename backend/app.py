@@ -81,6 +81,9 @@ def Api():
         return {'listings': list_listing}
     elif request.method == 'POST':
         data = request.form 
+        if 'Title' not in data or 'Description' not in data or 'Category' not in data or 'Price' not in data or 'Image' not in data: 
+            return jsonify({'error': 'You must enter all the data in order to submit'}), 400
+
         new_listing = Listing(
             title=data.get('Title'),
             description=data.get('Description'),
