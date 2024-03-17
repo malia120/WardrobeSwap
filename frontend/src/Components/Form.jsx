@@ -15,6 +15,7 @@ function Form() {
     const [Text, setText] = useState("");
     const [submitted, setSubmitted] = useState(false); 
     const navigate = useNavigate();
+    const [file, setFile] = useState(); 
     console.log(Text);
 
      /**
@@ -27,6 +28,10 @@ function Form() {
         e.preventDefault();
     
         const formData = new FormData(e.target);
+
+        if (file) {
+          formData.append("Image", file);
+      }
     
         try {
           const response = await fetch("http://127.0.0.1:5000/api", {
@@ -53,6 +58,9 @@ function Form() {
      * 
      * 
      */
+      const handleFileChange = (selectedFile) => {
+        setFile(selectedFile);
+      };
 
       if (submitted) {
         return (
@@ -99,7 +107,7 @@ function Form() {
                 </div>
                 <div className="formGroup">
                   <label>Image</label>
-                    <Image  />
+                  <Image onFileChange={handleFileChange} />
                 </div>
                 <button id="Submit-button">Submit</button>
             </div>

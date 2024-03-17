@@ -6,7 +6,7 @@ import Children from "./Pages/children";
 import AboutUs from "./Pages/aboutUs";
 import ThisPlatform from "./Pages/thisPlatform";
 import Home from "./Pages/home";
-import Sell from "./Pages/sell";
+import Sell from "./Pages/Sell";
 
 /**
  * Main App component that sets up the routing for different pages.

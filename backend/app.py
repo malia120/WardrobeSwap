@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from datetime import datetime
 from flask_migrate import Migrate
+import os
+
 
 app = Flask(__name__) 
 
@@ -81,19 +83,25 @@ def Api():
         return {'listings': list_listing}
     elif request.method == 'POST':
         data = request.form 
-        if 'Title' not in data or 'Description' not in data or 'Category' not in data or 'Price' not in data or 'Image' not in data: 
+        title = data.get('Title')
+        description = data.get('Description')
+        category = data.get('Category')
+        price = data.get('Price')
+        image = request.files['Image']
+        if not all([title, description, category, price, image]):
             return jsonify({'error': 'You must enter all the data in order to submit'}), 400
 
         new_listing = Listing(
-            title=data.get('Title'),
-            description=data.get('Description'),
-            category=data.get('Category'),
-            price=data.get('Price'),
-            image=data.get('Image'),
+            title=title,
+            description=description,
+            category=category,
+            price=price,
+            image=image.filename, 
             date_created=datetime.utcnow()
         )
         db.session.add(new_listing)
         db.session.commit()
+        image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
         return jsonify({'message': 'Listing added successfully'}), 201
 
 if __name__ == "__main__":
