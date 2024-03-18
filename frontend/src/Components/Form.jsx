@@ -42,6 +42,9 @@ function Form() {
             method: "POST",
             body: formData,
           });
+
+          console.log("Response status:", response.status);
+          console.log("Response body:", await response.text());
     
           if (response.ok) {
             console.log("Data submitted successfully");

@@ -12,7 +12,7 @@ CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///listing.db'
-app.config['UPLOAD_FOLDER'] = 'backend/Upload'
+app.config['UPLOAD_FOLDER'] = r'C:\Users\Maliha\Desktop\Website\PROJECT\frontend\src\Upload'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_POOL_SIZE'] = 20  
 app.config['SQLALCHEMY_MAX_OVERFLOW'] = 5  
