@@ -36,7 +36,7 @@ class Listing(db.Model):
     description = db.Column(db.String(255), nullable=False)
     category = db.Column(db.String(50), nullable=False)
     price = db.Column(db.String(10), nullable=False)
-    image = db.Column(db.String(255), nullable=False)
+    image_path = db.Column(db.String(255), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
@@ -102,7 +102,7 @@ def Api():
             description=description,
             category=category,
             price=price,
-            image=image.filename, 
+            image_path=image.filename, 
             date_created=datetime.utcnow()
         )
         db.session.add(new_listing)

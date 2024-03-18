@@ -82,7 +82,7 @@ function Form() {
     
     return (
         <React.Fragment>
-        <form onSubmit={handleSubmit}> 
+        <form onSubmit={handleSubmit} encType="multipart/form-data"> 
             <div className="formInput">
                 <div className="formGroup">
                     <label>Title</label>
@@ -111,7 +111,7 @@ function Form() {
                 </div>
                 <div className="formGroup">
                   <label>Image</label>
-                  <Image onFileChange={handleFileChange} />
+                  <input type="file" name="Image" onChange={handleFileChange} />
                 </div>
                 <button id="Submit-button">Submit</button>
             </div>

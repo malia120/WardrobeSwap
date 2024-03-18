@@ -7,7 +7,7 @@ function Image({ onFileChange }) {
 
     function handleChange (e) {
         const file = e.target.files[0];
-        setFile(URL.createObjectURL(file));
+        setFile(file);
         // console.log(e.target.files);
         onFileChange(file);
     }
