@@ -7,7 +7,8 @@ function Image({ onFileChange }) {
 
     function handleChange (e) {
         const file = e.target.files[0];
-        console.log(e.target.files);
+        setFile(URL.createObjectURL(file));
+        // console.log(e.target.files);
         onFileChange(file);
     }
  
@@ -15,6 +16,7 @@ function Image({ onFileChange }) {
         <div className="App">
             <h2>Add Image:</h2>
             <input type="file" onChange={handleChange} />
+            {file && <img src={file} alt="Uploaded" />} 
             <img src={file} alt=""/>
         </div>
     );

@@ -54,6 +54,7 @@ def home():
 
 
 @app.route('/api', methods=['GET', 'POST'])
+
 def Api():
 
     """
@@ -69,6 +70,8 @@ def Api():
     - GET Request: JSON object with a list of all listings.
     - POST Request: JSON object with a confirmation message.
     """
+
+    
     if request.method == 'GET':
         all_listing = Listing.query.all()
         list_listing = []
@@ -106,7 +109,10 @@ def Api():
         db.session.commit()
         image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
         return jsonify({'message': 'Listing added successfully'}), 201
+    
+    
 
 if __name__ == "__main__":
+    CORS(app)
     app.run(debug=True)
     
