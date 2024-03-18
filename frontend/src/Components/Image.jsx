@@ -1,10 +1,14 @@
 import React, { useState } from "react";
  
-function Image() {
-    const [file, setFile] = useState();
-    function handleChange(e) {
+
+function Image({ onFileChange }) {
+    const [file, setFile] = useState(null);
+    
+
+    function handleChange (e) {
+        const file = e.target.files[0];
         console.log(e.target.files);
-        setFile(URL.createObjectURL(e.target.files[0]));
+        onFileChange(file);
     }
  
     return (

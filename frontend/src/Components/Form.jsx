@@ -15,7 +15,7 @@ function Form() {
     const [Text, setText] = useState("");
     const [submitted, setSubmitted] = useState(false); 
     const navigate = useNavigate();
-    const [file, setFile] = useState(); 
+    const [file, setFile] = useState(null);
     console.log(Text);
 
      /**
@@ -23,6 +23,10 @@ function Form() {
      *
      * @param {Event} e - The form submitted event.
      */
+
+     const handleFileChange = (selectedFile) => {
+      setFile(selectedFile);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -58,9 +62,6 @@ function Form() {
      * 
      * 
      */
-      const handleFileChange = (selectedFile) => {
-        setFile(selectedFile);
-      };
 
       if (submitted) {
         return (
