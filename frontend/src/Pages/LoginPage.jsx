@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar } from '../Components/Navbar';
-import LoginSignUp from '../Components/LoginSignUp';
+import Login from '../Components/Login';
 
 function LoginPage() {
 
@@ -11,7 +11,7 @@ function LoginPage() {
 
         <Navbar />
         <div className="App">
-        <LoginSignUp/>
+        <Login/>
 
         </div>
         

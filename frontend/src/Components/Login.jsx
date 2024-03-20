@@ -1,32 +1,32 @@
 import React from 'react'
-import '../Style/Login.css'
+import '../Style/App.css'
 
-const LoginSignUp = () => {
+const Login = () => {
   return (
     <div className='container'>
         <div className="header">
-            <div className='text'>Sign Up</div>
+            <div className='text'>Login</div>
             <div className='underline'></div>
         </div>
         <div className='inputs'>
             <div className='input'>
-                <input type='username' />
+                <input type='username' placeholder='Username'/>
             </div>
 
-            <div className='input'>
-                <input type='email' />
-            </div>
+            {/* <div className='input'>
+                <input type='email' placeholder='Email'/>
+            </div> */}
 
             <div className='input'>
-                <input type='password' />
+                <input type='password' placeholder='Password'/>
             </div>
         </div> 
         <div className='submit_container'>
-            <div className='Submit'>Sign up</div>
+            {/* <div className='Submit'>Sign up</div> */}
             <div className='Submit'>Login</div>
         </div>
     </div>
   )
 }
 
-export default LoginSignUp;
+export default Login;
