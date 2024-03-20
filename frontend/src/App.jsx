@@ -7,6 +7,9 @@ import AboutUs from "./Pages/aboutUs";
 import ThisPlatform from "./Pages/thisPlatform";
 import Home from "./Pages/home";
 import Sell from "./Pages/Sell";
+import ShowListing from "./Components/ShowListing";
+import Cart from "./Pages/cart";
+import Login from "./Pages/Login";
 
 /**
  * Main App component that sets up the routing for different pages.
@@ -26,6 +29,9 @@ function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/this-platform" element={<ThisPlatform />} />
         <Route path="/sell" element={<Sell />} />
+        <Route path=':item.id' element={<ShowListing/>}/>
+        <Route path="/cart" element={<Cart />} />   
+        <Route path="/login" element={<Login />} /> 
       </Routes>
     </React.Fragment>
   );
