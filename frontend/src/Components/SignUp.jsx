@@ -24,7 +24,6 @@ const SignUp = () => {
         </div> 
         <div className='submit_container'>
             <div className='Submit'>Sign up</div>
-            <div className='Submit'>Login</div>
         </div>
     </div>
   )
