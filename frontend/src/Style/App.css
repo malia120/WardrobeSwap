@@ -533,4 +533,21 @@ transition: background-color 0.3s;
 .FormSubmit button:hover {
 background-color: var(--secondaryColour);
 }
+
+.auth-buttons {
+    display: flex;
+}
+
+.auth-button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #DAB692; 
+}
+
+.auth-button.cart-button {
+    background-color: #8f5b34; 
+}
   

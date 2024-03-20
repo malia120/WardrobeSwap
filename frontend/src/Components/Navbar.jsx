@@ -36,6 +36,10 @@ export function Navbar() {
                 <Link to="/children">Children</Link>
                 <Link to="/about-us">About us</Link>
                 <Link to="/this-platform">This platform</Link>
+                <div className="auth-buttons">
+                    <Link to="/login" className="auth-button">Login</Link>
+                    <Link to="/cart" className="auth-button cart-button">Cart</Link>
+                </div>
                 <button className="nav-button nav-close-button" onClick={showNavBar}>
                     <FaTimes/>
                 </button>

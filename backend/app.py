@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from datetime import datetime
 from flask_migrate import Migrate
+from flask import send_from_directory
 import os
 
 
@@ -36,7 +37,7 @@ class Listing(db.Model):
     description = db.Column(db.String(255), nullable=False)
     category = db.Column(db.String(50), nullable=False)
     price = db.Column(db.String(10), nullable=False)
-    image_path = db.Column(db.String(255), nullable=False)
+    image = db.Column(db.String(255), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
@@ -102,7 +103,7 @@ def Api():
             description=description,
             category=category,
             price=price,
-            image_path=image.filename, 
+            image=image.filename, 
             date_created=datetime.utcnow()
         )
         db.session.add(new_listing)
