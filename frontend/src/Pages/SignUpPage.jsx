@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar } from '../Components/Navbar';
-import { Link } from "react-router-dom";
+import SignUp from '../Components/SignUp';
 import Login from '../Components/Login';
 
 function SignUpPage() {
@@ -12,7 +12,7 @@ function SignUpPage() {
 
         <Navbar />
         <div className="App">
-        <SignUp/>
+        <SignUp />
 
         </div>
         

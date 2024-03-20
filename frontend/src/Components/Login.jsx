@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import '../Style/App.css'
 
 const Login = () => {
@@ -25,7 +26,9 @@ const Login = () => {
             {/* <div className='Submit'>Sign up</div> */}
             <div className='Submit'>Login</div>
         </div>
-        <div className='signup_text'>Don't have an account?  <a href='/signup' style={{fontWeight: 'bold'}}>Sign Up</a></div>
+        <div className='signup_text'>Don't have an account?  
+            <Link to='/signup' style={{fontWeight: 'bold'}}> Sign Up</Link>
+        </div>
     </div>
   )
 }

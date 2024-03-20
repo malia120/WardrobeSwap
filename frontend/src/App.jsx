@@ -10,6 +10,7 @@ import Sell from "./Pages/Sell";
 import ShowListing from "./Components/ShowListing";
 import Cart from "./Pages/cart";
 import LoginPage from "./Pages/LoginPage";
+import SignUpPage from "./Pages/SignUpPage";
 
 /**
  * Main App component that sets up the routing for different pages.
@@ -32,6 +33,7 @@ function App() {
         <Route path=':item.id' element={<ShowListing/>}/>
         <Route path="/cart" element={<Cart />} />   
         <Route path="/login" element={<LoginPage />} /> 
+        <Route path="/signup" element={<SignUpPage />} />
       </Routes>
     </React.Fragment>
   );
