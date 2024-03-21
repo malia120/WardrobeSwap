@@ -13,6 +13,7 @@ CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///listing.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['UPLOAD_FOLDER'] = r'C:\Users\Maliha\Desktop\Website\PROJECT\frontend\src\Upload'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_POOL_SIZE'] = 20  
@@ -42,6 +43,12 @@ class Listing(db.Model):
 
     def __repr__(self):
         return '<Title %r>' % self.id
+    
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(50), unique=True, nullable=False)
+    email = db.Column(db.String(100), unique=True, nullable=False)
+    password = db.Column(db.String(255), nullable=False)
 
 @app.route('/')
 def home():
@@ -111,9 +118,22 @@ def Api():
         image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
         return jsonify({'message': 'Listing added successfully'}), 201
     
+@app.route('/signup', methods=['POST'])
+def signup():
+    data = request.json
+    username = data.get('username')
+    email = data.get('email')
+    password = data.get('password')
+
+    if not all([username, email, password]):
+        return jsonify({'error': 'Please provide all required fields'}), 400
     
+    new_user = User(username=username, email=email, password=password)
+    db.session.add(new_user)
+    db.session.commit()
+    return jsonify({'message': 'Signup successful'}), 201
 
 if __name__ == "__main__":
     CORS(app)
     app.run(debug=True)
-    
+    db.create_all()

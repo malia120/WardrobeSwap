@@ -1,7 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react';
 import '../Style/App.css'
 
 const SignUp = () => {
+    const [formData, setFormData] = useState({username: '', email: '', password: ''});
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+
+        try {
+            const response = await fetch('http://localhost:5000/signup', {
+                method: 'POST',
+                body: formData,
+            });
+
+            console.log("Response status:", response.status);
+            console.log("Response body:", await response.text());
+
+
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
   return (
     
     <div className='container'>
