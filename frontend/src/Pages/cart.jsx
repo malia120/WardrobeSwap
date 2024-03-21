@@ -11,6 +11,17 @@ import {  Navbar  } from "../Components/Navbar";
 
 function Cart() {
 
+    return (
+        <React.Fragment>
+    
+            <Navbar />
+            <div className="App">
+    
+            </div>
+            
+        </React.Fragment>
+    
+    );
 
 }
 
