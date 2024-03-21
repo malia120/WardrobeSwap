@@ -535,7 +535,7 @@ background-color: var(--secondaryColour);
 }
 
 .auth-buttons {
-    display: flex;
+    margin-left: auto;
 }
 
 .auth-button {
@@ -544,10 +544,11 @@ background-color: var(--secondaryColour);
     border-radius: 5px;
     text-decoration: none;
     color: #fff;
-    background-color: #DAB692; 
+    background-color: #8f5b34; 
 }
 
 .auth-button.cart-button {
+    margin-left: center;
     background-color: #8f5b34; 
 }
   
@@ -610,4 +611,37 @@ background-color: var(--secondaryColour);
 
 .Submit:hover {
     background-color: var(--secondaryColour);
+}
+
+.Cart-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.Cart-heading {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #59351a;
+}
+
+.Cart-message {
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.Cart-link {
+    font-size: 1.2rem;
+    color: #8f5b34;
+    text-decoration: none;
+    transition: color 0.3s;
+    text-align: center;
+}
+
+.Cart-link:hover {
+    color: #59351a;
+    cursor: pointer;
 }
