@@ -6,19 +6,19 @@ import Children from "./Pages/children";
 import AboutUs from "./Pages/aboutUs";
 import ThisPlatform from "./Pages/thisPlatform";
 import Home from "./Pages/home";
-import Sell from "./Pages/sell";
+import Sell from "./Pages/Sell";
+import ShowListing from "./Components/ShowListing";
+import Cart from "./Pages/cart";
+import LoginPage from "./Pages/LoginPage";
+import SignUpPage from "./Pages/SignUpPage";
 
-const server = 'http://127.0.0.1:5000';
+/**
+ * Main App component that sets up the routing for different pages.
+ *
+ * @returns root components.
+ */
 
 function App() {
-  const [initialData, setInitialData] = useState({});
-
-  useEffect(()=>{
-    fetch(server + '/api').then(
-      response => response.json())
-    .then(data => setInitialData(data))
-    .catch(error => console.error("Error fetching data:", error, error.message, error.stack))
-  }, []);
 
   return (
     <React.Fragment> 
@@ -30,10 +30,11 @@ function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/this-platform" element={<ThisPlatform />} />
         <Route path="/sell" element={<Sell />} />
+        <Route path=':item.id' element={<ShowListing/>}/>
+        <Route path="/cart" element={<Cart />} />   
+        <Route path="/login" element={<LoginPage />} /> 
+        <Route path="/signup" element={<SignUpPage />} />
       </Routes>
-      <div className="App">
-        <h1>{(initialData.title)}</h1>
-      </div>  
     </React.Fragment>
   );
 
