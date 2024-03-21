@@ -553,7 +553,7 @@ background-color: var(--secondaryColour);
 }
   
 
-.container {
+.Auth-container {
     margin: auto;
     width: 50%;
     padding-top: 50px;
