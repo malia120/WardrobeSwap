@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from datetime import datetime
 from flask_migrate import Migrate
+from flask import send_from_directory
 import os
 
 
@@ -12,6 +13,7 @@ CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///listing.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['UPLOAD_FOLDER'] = r'C:\Users\Maliha\Desktop\Website\PROJECT\frontend\src\Upload'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_POOL_SIZE'] = 20  
@@ -36,11 +38,17 @@ class Listing(db.Model):
     description = db.Column(db.String(255), nullable=False)
     category = db.Column(db.String(50), nullable=False)
     price = db.Column(db.String(10), nullable=False)
-    image_path = db.Column(db.String(255), nullable=False)
+    image = db.Column(db.String(255), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
         return '<Title %r>' % self.id
+    
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(50), unique=True, nullable=False)
+    email = db.Column(db.String(100), unique=True, nullable=False)
+    password = db.Column(db.String(255), nullable=False)
 
 @app.route('/')
 def home():
@@ -102,7 +110,7 @@ def Api():
             description=description,
             category=category,
             price=price,
-            image_path=image.filename, 
+            image=image.filename, 
             date_created=datetime.utcnow()
         )
         db.session.add(new_listing)
@@ -110,9 +118,22 @@ def Api():
         image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
         return jsonify({'message': 'Listing added successfully'}), 201
     
+@app.route('/signup', methods=['POST'])
+def signup():
+    data = request.json
+    username = data.get('username')
+    email = data.get('email')
+    password = data.get('password')
+
+    if not all([username, email, password]):
+        return jsonify({'error': 'Please provide all required fields'}), 400
     
+    new_user = User(username=username, email=email, password=password)
+    db.session.add(new_user)
+    db.session.commit()
+    return jsonify({'message': 'Signup successful'}), 201
 
 if __name__ == "__main__":
     CORS(app)
     app.run(debug=True)
-    
+    db.create_all()

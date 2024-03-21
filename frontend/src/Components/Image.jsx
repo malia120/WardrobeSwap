@@ -19,7 +19,7 @@ function Image({ onFileChange }) {
             {file && <img src={file} alt="Uploaded" />} 
             <img src={file} alt=""/>
         </div>
-    );
-}
+    ); 
+}  
  
 export default Image;
