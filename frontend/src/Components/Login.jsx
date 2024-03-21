@@ -4,7 +4,7 @@ import '../Style/App.css'
 
 const Login = () => {
   return (
-    <div className='container'>
+    <div className='Auth-container'>
         <div className="header">
             <div className='text'>Login</div>
             <div className='underline'></div>
