@@ -557,10 +557,17 @@
      margin: auto;
      width: 50%;
      padding-top: 50px;
-     background-color: var(--mainColourLight);
+     background-color: white;
      border-radius: 10px;
      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
  }
+
+ .signup_text {
+    text-align: center; /* Center the text */
+    margin-top: 20px; /* Add some top margin for spacing */
+    font-size: 1.2rem; /* Adjust font size if necessary */
+    color: #251e18; /* Text color */
+}
  
  .header {
      text-align: center;
