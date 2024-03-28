@@ -118,20 +118,33 @@ def Api():
         image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
         return jsonify({'message': 'Listing added successfully'}), 201
     
-@app.route('/signup', methods=['POST'])
+@app.route('/signup', methods=['POST, GET'])
 def signup():
-    data = request.json
-    username = data.get('username')
-    email = data.get('email')
-    password = data.get('password')
+    if request.method == 'POST':
+        data = request.json
+        username = data.get('username')
+        email = data.get('email')
+        password = data.get('password')
 
-    if not all([username, email, password]):
-        return jsonify({'error': 'Please provide all required fields'}), 400
-    
-    new_user = User(username=username, email=email, password=password)
-    db.session.add(new_user)
-    db.session.commit()
-    return jsonify({'message': 'Signup successful'}), 201
+        if not all([username, email, password]):
+            return jsonify({'error': 'Please provide all required fields'}), 400
+
+        new_user = User(username=username, email=email, password=password)
+        db.session.add(new_user)
+        db.session.commit()
+        return jsonify({'message': 'Signup successful'}), 201
+
+    elif request.method == 'GET':
+        all_users = User.query.all()
+        user_list = []
+        for user in all_users:
+            user_list.append({
+                'id': user.id,
+                'username': user.username,
+                'email': user.email,
+    })
+    return jsonify({'users': user_list}), 200
+
 
 if __name__ == "__main__":
     CORS(app)
