@@ -10,14 +10,18 @@ import os
 app = Flask(__name__) 
 
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+basedir = os.path.abspath(os.path.dirname(__file__))
 
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///listing.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'instances')
+app.config['SQLALCHEMY_BINDS'] = {
+    "users": 'sqlite:///' + os.path.join(basedir, 'instances', 'users.db'),
+    "listing": 'sqlite:///' + os.path.join(basedir, 'instances', 'listing.db')
+}
 app.config['UPLOAD_FOLDER'] = r'C:\Users\Maliha\Desktop\Website\PROJECT\frontend\src\Upload'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_POOL_SIZE'] = 20  
 app.config['SQLALCHEMY_MAX_OVERFLOW'] = 5  
+
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
@@ -33,6 +37,7 @@ class Listing(db.Model):
     - price (str): The price associated with the listing.
     - date_created (datetime): The timestamp indicating when the listing was created.
     """
+    __bind_key__ = 'listing'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(255), nullable=False)
@@ -45,6 +50,7 @@ class Listing(db.Model):
         return '<Title %r>' % self.id
     
 class User(db.Model):
+    __bind_key__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
@@ -118,7 +124,7 @@ def Api():
         image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
         return jsonify({'message': 'Listing added successfully'}), 201
     
-@app.route('/signup', methods=['POST, GET'])
+@app.route('/signup', methods=['POST', 'GET'])
 def signup():
     if request.method == 'POST':
         data = request.json
