@@ -12,10 +12,10 @@ app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'instances')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'instance')
 app.config['SQLALCHEMY_BINDS'] = {
-    "users": 'sqlite:///' + os.path.join(basedir, 'instances', 'users.db'),
-    "listing": 'sqlite:///' + os.path.join(basedir, 'instances', 'listing.db')
+    "users": 'sqlite:///' + os.path.join(basedir, 'instance', 'users.db'),
+    "listing": 'sqlite:///' + os.path.join(basedir, 'instance', 'listing.db')
 }
 app.config['UPLOAD_FOLDER'] = r'C:\Users\Maliha\Desktop\Website\PROJECT\frontend\src\Upload'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
