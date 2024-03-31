@@ -5,6 +5,7 @@ from datetime import datetime
 from flask_migrate import Migrate
 from flask import send_from_directory
 import os
+from flask import jsonify
 
 
 app = Flask(__name__) 
@@ -12,12 +13,12 @@ app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'instance')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'instance', 'app.db')
 app.config['SQLALCHEMY_BINDS'] = {
-    "users": 'sqlite:///' + os.path.join(basedir, 'instance', 'users.db'),
+    "user": 'sqlite:///' + os.path.join(basedir, 'instance', 'user.db'),
     "listing": 'sqlite:///' + os.path.join(basedir, 'instance', 'listing.db')
 }
-app.config['UPLOAD_FOLDER'] = r'C:\Users\Maliha\Desktop\Website\PROJECT\frontend\src\Upload'
+app.config['UPLOAD_FOLDER'] = os.path.join(basedir, 'uploads')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_POOL_SIZE'] = 20  
 app.config['SQLALCHEMY_MAX_OVERFLOW'] = 5  
@@ -29,7 +30,7 @@ class Listing(db.Model):
     """
     Represents a listing in the application.
 
-    Attributes:
+    Attributes: 
     - id (int): The unique primary key for the listing.
     - title (str): The title of the listing.
     - description (str): The description of the listing.
@@ -50,11 +51,12 @@ class Listing(db.Model):
         return '<Title %r>' % self.id
     
 class User(db.Model):
-    __bind_key__ = 'users'
+    __bind_key__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
 @app.route('/')
 def home():
@@ -127,7 +129,7 @@ def Api():
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
     if request.method == 'POST':
-        data = request.json
+        data = request.form
         username = data.get('username')
         email = data.get('email')
         password = data.get('password')
@@ -141,18 +143,24 @@ def signup():
         return jsonify({'message': 'Signup successful'}), 201
 
     elif request.method == 'GET':
-        all_users = User.query.all()
+        all_user = User.query.all()
         user_list = []
-        for user in all_users:
+        for user in all_user:
             user_list.append({
                 'id': user.id,
                 'username': user.username,
                 'email': user.email,
+                'date_created': user.date_created.strftime('%Y-%m-%d %H:%M:%S')
     })
-    return jsonify({'users': user_list}), 200
+    return jsonify({'user': user_list}), 200
 
 
 if __name__ == "__main__":
     CORS(app)
+    with app.app_context():
+        try:
+            db.create_all()
+        except Exception as e:
+            print("An error occurred while creating tables:", str(e))
     app.run(debug=True)
-    db.create_all()
+    

@@ -10,22 +10,27 @@ const SignUp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log("Form data:", formData);
 
 
         try {
             const response = await fetch('http://localhost:5000/signup', {
                 method: 'POST',
-                body: formData,
+                headers: {'Content-Type': 'application/json',},
+                body: JSON.stringify(formData),
             });
 
             console.log("Response status:", response.status);
             console.log("Response body:", await response.text());
 
-
-            const data = await response.json();
-            console.log(data);
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Response data:", data);
+            } else {
+                console.error("Server error:", response.statusText);
+            }
         } catch (error) {
-            console.error(error);
+            console.error("Error:", error);
         }
     };
 
@@ -36,22 +41,20 @@ const SignUp = () => {
             <div className='text'>Sign up</div>
             <div className='underline'></div>
         </div>
-        <div className='inputs'>
+        <form className='inputs' onSubmit={handleSubmit}>
             <div className='input'>
-                <input type='username' placeholder='Username'/>
+                <input type='text' name='username' placeholder='Username' value={formData.username} onChange={handleChange} />
             </div>
-
             <div className='input'>
-                <input type='email' placeholder='Email'/>
+                <input type='email' name='email' placeholder='Email' value={formData.email} onChange={handleChange} />
             </div>
-
             <div className='input'>
-                <input type='password' placeholder='Password'/>
+                <input type='password' name='password' placeholder='Password' value={formData.password} onChange={handleChange} />
             </div>
-        </div> 
-        <div className='submit_container'>
-            <div className='Submit'>Sign up</div>
-        </div>
+            <div className='submit_container'>
+                <button type='submit' className='Submit'>Sign up</button>
+            </div>
+        </form>
     </div>
   )
 }
