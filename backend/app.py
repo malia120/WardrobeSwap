@@ -69,7 +69,7 @@ def home():
     return "enter /api after the link to see all the items in the database"
 
 
-@app.route('/api', methods=['GET', 'POST'])
+@app.route('/api/listing', methods=['GET', 'POST'])
 
 def Api():
 
@@ -126,7 +126,7 @@ def Api():
         image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
         return jsonify({'message': 'Listing added successfully'}), 201
     
-@app.route('/signup', methods=['POST', 'GET'])
+@app.route('/api/signup', methods=['POST', 'GET'])
 def signup():
     if request.method == 'POST':
         data = request.form
@@ -159,8 +159,8 @@ if __name__ == "__main__":
     CORS(app)
     with app.app_context():
         try:
+            db.drop_all()  
             db.create_all()
         except Exception as e:
             print("An error occurred while creating tables:", str(e))
     app.run(debug=True)
-    
