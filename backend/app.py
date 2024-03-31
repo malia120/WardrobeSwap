@@ -129,7 +129,7 @@ def Api():
 @app.route('/api/signup', methods=['POST', 'GET'])
 def signup():
     if request.method == 'POST':
-        data = request.form
+        data = request.json
         username = data.get('username')
         email = data.get('email')
         password = data.get('password')

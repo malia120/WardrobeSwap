@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom"; 
 import '../Style/App.css'
 
 const SignUp = () => {
     const [formData, setFormData] = useState({username: '', email: '', password: ''});
+    const [submitted, setSubmitted] = useState(false);
+    const navigate = useNavigate();
+
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,18 +25,28 @@ const SignUp = () => {
             });
 
             console.log("Response status:", response.status);
-            console.log("Response body:", await response.text());
+            const data = await response.json();
+            console.log("Response body:", data);
 
             if (response.ok) {
-                const data = response.json();
                 console.log("Response data:", data);
+                setSubmitted(true);
             } else {
-                console.error("Server error:", response.statusText);
+                console.error("Server error:", data.message);
             }
         } catch (error) {
             console.error("Error:", error);
         }
     };
+
+    if (submitted) {
+        return (
+          <div className="FormSubmit">
+            <p>Thank you for submitting. Click here to Login into your account.</p>
+            <button onClick={() => navigate("/login")}>Login</button>
+          </div>
+        );
+      }
 
   return (
     
