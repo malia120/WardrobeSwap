@@ -154,6 +154,19 @@ def signup():
     })
     return jsonify({'user': user_list}), 200
 
+@app.route('/api/login', methods=['POST'])
+def login():
+    if request.method == 'POST':
+        data = request.json
+        username = data.get('username')
+        password = data.get('password')
+
+        user = User.query.filter_by(username=username, password=password).first()
+
+        if user:
+            return jsonify({'message': 'Login successful'}), 200
+        else:
+            return jsonify({'error': 'Invalid username or password'}), 401
 
 if __name__ == "__main__":
     CORS(app)
