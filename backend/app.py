@@ -6,6 +6,7 @@ from flask_migrate import Migrate
 from flask import send_from_directory
 import os
 from flask import jsonify
+from flask_bcrypt import Bcrypt
 
 
 app = Flask(__name__) 
@@ -21,7 +22,8 @@ app.config['SQLALCHEMY_BINDS'] = {
 app.config['UPLOAD_FOLDER'] = os.path.join(basedir, 'uploads')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_POOL_SIZE'] = 20  
-app.config['SQLALCHEMY_MAX_OVERFLOW'] = 5  
+app.config['SQLALCHEMY_MAX_OVERFLOW'] = 5   
+bcrypt = Bcrypt(app)
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -136,8 +138,17 @@ def signup():
 
         if not all([username, email, password]):
             return jsonify({'error': 'Please provide all required fields'}), 400
+        
+        existing_user = User.query.filter_by(username=username).first()
+        existing_email = User.query.filter_by(email=email).first()
 
-        new_user = User(username=username, email=email, password=password)
+        if existing_user:
+            return jsonify({'error': 'Username already exists'}), 409
+        elif existing_email:
+            return jsonify({'error': 'Email already exists'}), 409
+        
+        hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+        new_user = User(username=username, email=email, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
         return jsonify({'message': 'Signup successful'}), 201
@@ -150,6 +161,7 @@ def signup():
                 'id': user.id,
                 'username': user.username,
                 'email': user.email,
+                'password': user.password,
                 'date_created': user.date_created.strftime('%Y-%m-%d %H:%M:%S')
     })
     return jsonify({'user': user_list}), 200
@@ -161,9 +173,8 @@ def login():
         username = data.get('username')
         password = data.get('password')
 
-        user = User.query.filter_by(username=username, password=password).first()
-
-        if user:
+        user = User.query.filter_by(username=username).first()
+        if user and bcrypt.check_password_hash(user.password, password):
             return jsonify({'message': 'Login successful'}), 200
         else:
             return jsonify({'error': 'Invalid username or password'}), 401

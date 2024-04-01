@@ -5,6 +5,7 @@ import '../Style/App.css'
 const Login = () => {
 
     const [formData, setFormData] = useState({username: '', email: '', password: ''});
+    const [submitted, setSubmitted] = useState(false);
     const navigate = useNavigate();
 
 
@@ -19,12 +20,16 @@ const Login = () => {
             const response = await fetch('http://localhost:5000/api/login', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json',},
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    username: 'username',
+                    password: 'password'
+                  })
             });
 
             if (response.ok) {
                 console.log("Login successful");
                 navigate("/");
+                setSubmitted(true);
             } else {
                 console.error("Login failed");
             }
@@ -32,6 +37,15 @@ const Login = () => {
             console.error("Error:", error);
         }
     };
+
+    if (submitted) {
+        return (
+          <div className="FormSubmit">
+            <p>You have logged into your account. Click below to return to home</p>
+            <button onClick={() => navigate("/")}>Return Home</button>
+          </div>
+        );
+      }
 
   return (
     <div className='Auth-container'>
@@ -53,8 +67,7 @@ const Login = () => {
             </div>
         </form> 
         <div className='submit_container'>
-            {/* <div className='Submit'>Sign up</div> */}
-            <div className='Submit'>Login</div>
+            <button type='submit' className='Submit'>Login</button>
         </div>
         <div className='signup_text'>Don't have an account?  
             <Link to='/signup' style={{fontWeight: 'bold'}}> Sign Up</Link>

@@ -5,6 +5,7 @@ import '../Style/App.css'
 const SignUp = () => {
     const [formData, setFormData] = useState({username: '', email: '', password: ''});
     const [submitted, setSubmitted] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(''); 
     const navigate = useNavigate();
 
 
@@ -33,6 +34,7 @@ const SignUp = () => {
                 setSubmitted(true);
             } else {
                 console.error("Server error:", data.message);
+                setErrorMessage("The username or email already exists.");
             }
         } catch (error) {
             console.error("Error:", error);
@@ -65,6 +67,7 @@ const SignUp = () => {
             <div className='input'>
                 <input type='password' name='password' placeholder='Password' value={formData.password} onChange={handleChange} />
             </div>
+            {errorMessage && <p className="error-message" style={{ color: 'red' }}>{errorMessage}</p>}
             <div className='submit_container'>
                 <button type='submit' className='Submit'>Sign up</button>
             </div>
