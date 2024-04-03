@@ -17,17 +17,16 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:5000/api/login', {
+            const response = await fetch('http://localhost:5000/api/signup', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json',},
-                body: JSON.stringify({
-                    username: 'username',
-                    password: 'password'
-                  })
+                body: JSON.stringify(formData)
             });
 
             if (response.ok) {
+                const responseData = await response.json();
                 console.log("Login successful");
+                console.log("Welcome, " + responseData.username); 
                 navigate("/");
                 setSubmitted(true);
             } else {
@@ -39,13 +38,14 @@ const Login = () => {
     };
 
     if (submitted) {
-        return (
-          <div className="FormSubmit">
+    return (
+        <div className="FormSubmit">
+            <p>Welcome, {formData.username}!</p>
             <p>You have logged into your account. Click below to return to home</p>
             <button onClick={() => navigate("/")}>Return Home</button>
-          </div>
-        );
-      }
+        </div>
+    );
+}
 
   return (
     <div className='Auth-container'>

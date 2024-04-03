@@ -11,7 +11,7 @@ from flask_bcrypt import Bcrypt
 
 app = Flask(__name__) 
 
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000", "supports_credentials": True}})
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'instance', 'app.db')
@@ -19,7 +19,9 @@ app.config['SQLALCHEMY_BINDS'] = {
     "user": 'sqlite:///' + os.path.join(basedir, 'instance', 'user.db'),
     "listing": 'sqlite:///' + os.path.join(basedir, 'instance', 'listing.db')
 }
-app.config['UPLOAD_FOLDER'] = os.path.join(basedir, 'uploads')
+app.config['UPLOAD_FOLDER'] = os.path.join('frontend/src/Upload')
+if not os.path.exists(app.config['UPLOAD_FOLDER']):
+    os.makedirs(app.config['UPLOAD_FOLDER'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_POOL_SIZE'] = 20  
 app.config['SQLALCHEMY_MAX_OVERFLOW'] = 5   
@@ -180,7 +182,6 @@ def login():
             return jsonify({'error': 'Invalid username or password'}), 401
 
 if __name__ == "__main__":
-    CORS(app)
     with app.app_context():
         try:
             db.drop_all()  

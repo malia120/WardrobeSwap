@@ -19,7 +19,7 @@ function Children() {
 
   // Fetch the data from the database 
   useEffect(() => {
-    fetch(server + '/api')
+    fetch(server + '/api/listing')
       .then(response => response.json())
       .then(data => setInitialData(data.listings))
       .catch(error => console.error("Error fetching data:", error, error.message, error.stack));

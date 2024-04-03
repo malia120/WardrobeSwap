@@ -15,7 +15,7 @@ export function ShowListing() {
 
     const [initialData, setInitialData] = useState([]);
     useEffect(()=>{
-      fetch(server + '/api').then(
+      fetch(server + '/api/listing').then(
         response => response.json())
       .then(data => setInitialData(data.listings))
       .catch(error => console.error("Error fetching data:", error, error.message, error.stack))
