@@ -43,7 +43,7 @@ function Men() {
       <div className='Card'>
         {menItems.map(item => (
           <div key={item.id} className="Cardview">
-            <img src={item.image} alt='image' className="cImage"></img>
+            <img src={`http://localhost:5000/uploads/${item.image}`} alt='image' className="cImage" />
             <div className="Card_info">
               <h1 className="Name">{item.title}</h1>
               <div className="display">
