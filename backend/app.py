@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from datetime import datetime
@@ -173,7 +173,9 @@ def signup():
 @app.route('/api/login', methods=['POST'])
 def login():
     if request.method == 'POST':
+        print("Login request received") 
         data = request.json
+        print("Data received:", data)  
         username = data.get('username')
         password = data.get('password')
 

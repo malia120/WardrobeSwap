@@ -17,7 +17,7 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:5000/api/signup', {
+            const response = await fetch('http://localhost:5000/api/login', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json',},
                 body: JSON.stringify(formData)
@@ -26,9 +26,8 @@ const Login = () => {
             if (response.ok) {
                 const responseData = await response.json();
                 console.log("Login successful");
-                console.log("Welcome, " + responseData.username); 
-                navigate("/");
                 setSubmitted(true);
+                navigate("/");
             } else {
                 console.error("Login failed");
             }
@@ -65,10 +64,10 @@ const Login = () => {
             <div className='input'>
                 <input type='password' name='password' placeholder='Password' value={formData.password} onChange={handleChange} />
             </div>
+            <div className='submit_container'>
+                <button type='submit' className='Submit'>Login</button>
+            </div>
         </form> 
-        <div className='submit_container'>
-            <button type='submit' className='Submit'>Login</button>
-        </div>
         <div className='signup_text'>Don't have an account?  
             <Link to='/signup' style={{fontWeight: 'bold'}}> Sign Up</Link>
         </div>
