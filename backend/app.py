@@ -128,6 +128,10 @@ def Api():
         image.save(os.path.join(app.config['UPLOAD_FOLDER'], image.filename))
         return jsonify({'message': 'Listing added successfully'}), 201
     
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
 @app.route('/api/signup', methods=['POST', 'GET'])
 def signup():
     if request.method == 'POST':
