@@ -19,9 +19,7 @@ app.config['SQLALCHEMY_BINDS'] = {
     "user": 'sqlite:///' + os.path.join(basedir, 'instance', 'user.db'),
     "listing": 'sqlite:///' + os.path.join(basedir, 'instance', 'listing.db')
 }
-app.config['UPLOAD_FOLDER'] = os.path.join('frontend/src/Upload')
-if not os.path.exists(app.config['UPLOAD_FOLDER']):
-    os.makedirs(app.config['UPLOAD_FOLDER'])
+app.config['UPLOAD_FOLDER'] = r'C:\Users\Maliha\Desktop\Website\PROJECT\frontend\src\Upload'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_POOL_SIZE'] = 20  
 app.config['SQLALCHEMY_MAX_OVERFLOW'] = 5   
