@@ -132,6 +132,23 @@ def Api():
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
+@app.route('/api/listing/<int:id>', methods=['GET'])
+def get_listing(id):
+
+    listing = Listing.query.get(id)
+    if not listing:
+        return jsonify({'error': 'Listing not found'}), 404
+
+    return jsonify({
+        'id': listing.id,
+        'title': listing.title,
+        'description': listing.description,
+        'category': listing.category,
+        'price': listing.price,
+        'image': listing.image,
+        'date_created': listing.date_created.strftime('%Y-%m-%d %H:%M:%S')
+    })
+
 @app.route('/api/signup', methods=['POST', 'GET'])
 def signup():
     if request.method == 'POST':
