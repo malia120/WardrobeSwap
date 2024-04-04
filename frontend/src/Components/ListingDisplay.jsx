@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
-function ListingDetail() {
+function ListingDisplay() {
     const { id } = useParams();
     const [listing, setListing] = useState(null);
 
@@ -11,6 +11,10 @@ function ListingDetail() {
             .then(data => setListing(data.listing))
             .catch(error => console.error("Error fetching data:", error));
     }, [id]);
+
+    if (!listing) {
+        return <div>Loading...</div>;
+      }
 
     return (
 
@@ -27,4 +31,4 @@ function ListingDetail() {
 
 }
 
-export default listingDisplay
+export default ListingDisplay

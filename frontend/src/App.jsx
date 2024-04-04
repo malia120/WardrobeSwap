@@ -11,7 +11,7 @@ import ShowListing from "./Components/ShowListing";
 import Cart from "./Pages/cart";
 import LoginPage from "./Pages/LoginPage";
 import SignUpPage from "./Pages/SignUpPage";
-import ListingDetail from "./Components/ListingDetail";
+import ListingDisplay from './Components/ListingDisplay';
 
 /**
  * Main App component that sets up the routing for different pages.
@@ -32,7 +32,7 @@ function App() {
         <Route path="/this-platform" element={<ThisPlatform />} />
         <Route path="/sell" element={<Sell />} />
         <Route path=':item.id' element={<ShowListing/>}/>
-        <Route path="/listings/:id" element={<ListingDetail />} />
+        <Route path="/listings/:id" element={<ListingDisplay />} />
         <Route path="/cart" element={<Cart />} />   
         <Route path="/login" element={<LoginPage />} /> 
         <Route path="/signup" element={<SignUpPage />} />
