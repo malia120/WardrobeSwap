@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../Style/App.css";
+import { Link, useParams } from "react-router-dom";
 const server = 'http://127.0.0.1:5000';
 
 /**
@@ -10,23 +11,24 @@ const server = 'http://127.0.0.1:5000';
  */
 
 
-export function ShowListing() {
+export function ShowListing({ items }) {
   // Storing initial data fetched from the server
+  const { id } = useParams(); 
 
-    const [initialData, setInitialData] = useState([]);
-    useEffect(()=>{
-      fetch(server + '/api/listing').then(
-        response => response.json())
-      .then(data => setInitialData(data.listings))
-      .catch(error => console.error("Error fetching data:", error, error.message, error.stack))
-    }, []);
+  const [listings, setListing] = useState(null);
+  useEffect(()=>{
+    fetch(`${server}/api/listing/${id}`)
+      .then(response => response.json())
+    .then(data => setListing(data))
+    .catch(error => console.error("Error fetching data:", error));
+  }, [id]);
   
     return (
       <React.Fragment> 
       <div className='Card'>
-        {initialData.map(item => (
+      {listings.map(item => (
         <div key={item.id} className="Cardview">
-        <img src={`http://localhost:5000/uploads/${item.image}`} alt='image' className="cImage" />
+         <img src={`http://localhost:5000/uploads/${item.image}`} alt='image' className="cImage" />
             <div className="Card_info">
               <h1 className="Name">{(item.title)}</h1>
                 <div className="display">

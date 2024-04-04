@@ -6,6 +6,7 @@ const Login = () => {
 
     const [formData, setFormData] = useState({username: '', email: '', password: ''});
     const [submitted, setSubmitted] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
 
@@ -30,6 +31,7 @@ const Login = () => {
                 navigate("/");
             } else {
                 console.error("Login failed");
+                setErrorMessage("The username or password does not match");
             }
         } catch (error) {
             console.error("Error:", error);
@@ -64,6 +66,7 @@ const Login = () => {
             <div className='input'>
                 <input type='password' name='password' placeholder='Password' value={formData.password} onChange={handleChange} />
             </div>
+            {errorMessage && <p className="error-message" style={{ color: 'red' }}>{errorMessage}</p>}
             <div className='submit_container'>
                 <button type='submit' className='Submit'>Login</button>
             </div>
