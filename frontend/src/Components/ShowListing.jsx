@@ -39,6 +39,7 @@ export function ShowListing() {
                 </div>
             </div>
           </Link>
+          <button className="addToCart"> Add to Cart </button>
         </div>        
     ))}
     </div>

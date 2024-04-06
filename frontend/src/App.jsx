@@ -12,6 +12,7 @@ import Cart from "./Pages/cart";
 import LoginPage from "./Pages/LoginPage";
 import SignUpPage from "./Pages/SignUpPage";
 import ListingDisplay from './Components/ListingDisplay';
+import { CartContextProvider } from "./Components/CartContext";
 
 /**
  * Main App component that sets up the routing for different pages.
@@ -22,7 +23,8 @@ import ListingDisplay from './Components/ListingDisplay';
 function App() {
 
   return (
-    <React.Fragment> 
+    <React.Fragment>
+      <CartContextProvider>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/women" element={<Women />} />
@@ -37,6 +39,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} /> 
         <Route path="/signup" element={<SignUpPage />} />
       </Routes>
+      </CartContextProvider>
     </React.Fragment>
   );
 
