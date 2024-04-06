@@ -13,7 +13,7 @@ export const CartContextProvider = ({ children }) => {
         };
 
 
-    const removeFromCart = (itemID) => {
+    const removeFromCart  = (itemID) => {
             setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemID));
         };
 

@@ -1,15 +1,24 @@
-import React from 'react';
+import React, {useContext} from "react";
+import { CartContext } from "./CartContext";
+
 
 export const CartItem = ({ item }) => {
-    
+    const { removeFromCart } = useContext(CartContext);
+
+    const handleRemoveItem = () => {
+      removeFromCart(item.id);
+    };    
 
     return (
-        <div className='cartItem'>
+    <div className='card'>
+        <div className='card-body'>
               <img src={`http://localhost:5000/uploads/${item.image}`} alt='image' className="cImage" />
         <div>
-            <h3>{item.title}</h3>
-            <p>Price: £{item.price}</p>
+        <h5 className='card-title'>{item.title}</h5>
+        <p className='card-text'>Price: £{item.price}</p>
+        <button onClick={handleRemoveItem}>Remove from Cart</button>
       </div>
+    </div>
     </div>
     )
 }
