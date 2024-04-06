@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import {  Navbar  } from "../Components/Navbar";
+import { CartContext } from "../Components/CartContext";
+import { CartItem } from "../Components/cartItems";
 
 
 /**
@@ -10,23 +12,30 @@ import {  Navbar  } from "../Components/Navbar";
 
  */
 
-function Cart() {
+const Cart = () => {
+    const { cartItems } = useContext(CartContext);
 
     return (
         <React.Fragment>
             <Navbar />
-            <div className="App">
-                <div className="Cart-container">
-                    <h1 className="Cart-heading">Your Cart</h1>
+            <div className="Cart">
+                <h1 className="Cart-heading">Your Cart</h1>
+                    {cartItems.length > 0 ? (
+            cartItems.map((item) => (
+              <CartItem key={item.id} item={item} />
+            ))
+          ) : (
+            <div>
                     <p className="Cart-message">Your cart is currently empty. Add something to your cart before proceeding.</p>
                     <p className="Cart-link"><Link to="/">Click here to browse</Link></p>
                 </div>
+                )}
             </div>
             
         </React.Fragment>
     
     );
 
-}
+};
 
 export default Cart;

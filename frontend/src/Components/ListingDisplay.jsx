@@ -2,9 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import {  Navbar  } from "../Components/Navbar";
 import { SearchBar } from "../Components/SearchBar";
 import { useParams, Link } from "react-router-dom";
-import { CartContext } from "./CartContext";
+import { CartContext } from "../Components/CartContext"; 
 
-function ListingDisplay() {
+const ListingDisplay = ({ listingProp }) => { 
     const { id } = useParams();
     const [listing, setListing] = useState(null);
     const [error, setError] = useState(null);
@@ -21,6 +21,14 @@ function ListingDisplay() {
             .catch(error => setError(error.message));
             
     }, [id]);
+    
+    
+    const handleAddToCart = () => {
+        if (listing) {
+            addToCart(listing);
+            alert("Item added to cart!"); 
+        }
+    };
 
     if (error) {
         return <div>Error: {error}</div>;
@@ -43,7 +51,7 @@ function ListingDisplay() {
                 </div>
         
         <div className="listingDisplay">
-          <h1>Listing Detail</h1>
+            <h1>Listing Detail</h1>
             <p>Item Number: {listing.id}</p>
             <p>Title: {listing.title}</p>
             <img src={`http://localhost:5000/uploads/${listing.image}`} alt='image' className="cImage" />
@@ -51,10 +59,9 @@ function ListingDisplay() {
             <p>Category: {listing.category}</p>
             <p>Price: £{listing.price}</p>
             <p>Date Created: {listing.date_created}</p>
-            <button className="addToCart" onClick={() => addToCart()}> Add to Cart </button>
+            <button className="addToCart" onClick={handleAddToCart}> Add to Cart </button>
             </div>
             </div>
-
             </div>
     </React.Fragment>
     );
