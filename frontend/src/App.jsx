@@ -21,10 +21,18 @@ import { CartContextProvider } from "./Components/CartContext";
  */
 
 function App() {
+  const [listings, setListings] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/api/listing")
+      .then(response => response.json())
+      .then(data => setListings(data.listings))
+      .catch(error => console.error("Error fetching listings:", error));
+  }, []);
 
   return (
     <React.Fragment>
-      <CartContextProvider>
+      <CartContextProvider listings={listings}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/women" element={<Women />} />

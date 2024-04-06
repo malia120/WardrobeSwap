@@ -2,11 +2,16 @@ import React, {createContext, useState, useEffect} from "react";
 
 export const CartContext = createContext();
 
-export const CartContextProvider = ({ children, Listings}) =>{
+export const CartContextProvider = ({ children, listings }) => {
+    console.log("Listings:", listings);
 
     const getCart = () => {
+        if (!listings) {
+            
+                return {};
+        }
         let cart = {};
-        for (let i = 1; i <= Listings.length + 1; i++) {
+        for (let i = 0; i < listings.length; i++) { 
             cart[i] = 0;
         }
         return cart;
@@ -28,4 +33,5 @@ export const CartContextProvider = ({ children, Listings}) =>{
             {children}
         </CartContext.Provider>
     );
+
 };
