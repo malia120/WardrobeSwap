@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../Style/App.css";
 import { Link } from "react-router-dom";
+import { CartContext } from "../Components/CartContext"; 
 const server = 'http://127.0.0.1:5000';
 
 /**
@@ -15,12 +16,22 @@ export function ShowListing() {
   // Storing initial data fetched from the server
 
     const [initialData, setInitialData] = useState([]);
+    const [listing] = useState(null);
+    const {addToCart} = useContext(CartContext)
+
     useEffect(()=>{
       fetch(server + '/api/listing').then(
         response => response.json())
       .then(data => setInitialData(data.listings))
       .catch(error => console.error("Error fetching data:", error, error.message, error.stack))
     }, []);
+
+    const handleAddToCart = (item) => {
+      if (item) {
+          addToCart(item);
+          alert("Item added to cart!"); 
+      }
+  };
   
     return (
       <React.Fragment> 
@@ -39,7 +50,7 @@ export function ShowListing() {
                 </div>
             </div>
           </Link>
-          <button className="addToCart"> Add to Cart </button>
+          <button className="addToCart" onClick={() => handleAddToCart(item)}> Add to Cart </button>
         </div>        
     ))}
     </div>
