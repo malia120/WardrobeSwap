@@ -8,7 +8,7 @@ import ShowListing from './ShowListing'
  * @returns  search bar components.
  */
 
-export const SearchBar = (placeholder, data) => {
+export const SearchBar = ({ placeholder, data }) => {
   const [search, setSearch] = useState('')
 
   const handleInputChange = (event) => {
@@ -19,11 +19,10 @@ export const SearchBar = (placeholder, data) => {
     <div className='input-wrapper'>
         <FaSearch id="search-icon"/>
         <input placeholder={placeholder} value={search} onChange={handleInputChange} />
-        <input placeholder="Search for items" />
         <button id="search-button">Search</button>
         <div className='result'>
-          {data.map((listing) => (
-              <a className="Listing" href={ShowListing} target="_blank">
+        {Array.isArray(data) && data.map((listing, index) => (
+           <a key={index} className="Listing" href={ShowListing} target="_blank">
             <p> {listing.title} </p>
               </a>
         ))}
