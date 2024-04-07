@@ -10,7 +10,15 @@ import  Form from "../Components/Form";
  */
 
 function Results() {
-  const [data] = useState([]); 
+  const [data, setData] = useState([]); 
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:5000/api/listing')
+      .then(response => response.json())
+      .then(data => setData(data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+  
     return (
       <React.Fragment> 
         <Navbar />

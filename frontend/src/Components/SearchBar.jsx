@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa'
 import ShowListing from './ShowListing'
 
@@ -17,20 +17,21 @@ export const SearchBar = ({ placeholder, data }) => {
     setSearch(value);
   };
 
-  const handleSearch = () => {
+  useEffect(() => {
+    if (!data) return;
     const results = data.filter(item =>
       item.title.toLowerCase().includes(search.toLowerCase())
     );
     setSearchResults(results);
-  };
+  }, [search, data]);
 
   return (
     <div className='input-wrapper'>
         <FaSearch id="search-icon"/>
         <input placeholder={placeholder} value={search} onChange={handleInputChange} />
-        <button id="search-button" onClick={handleSearch}>Search</button>
+        <button id="search-button" onClick={() => setSearchResults(search)}>Search</button>
         <div className='result'>
-        {Array.isArray(data) && data.map((listing, index) => (
+        {Array.isArray(searchResults) && searchResults.map((listing, index) => ( 
            <a key={index} className="Listing" href={ShowListing} target="_blank">
             <p> {listing.title} </p>
               </a>
