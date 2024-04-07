@@ -15,9 +15,10 @@ function Results() {
   useEffect(() => {
     fetch('http://127.0.0.1:5000/api/listing')
       .then(response => response.json())
-      .then(data => setData(data))
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
+      .then(data => { console.log(data); setData(data)
+  }) 
+  .catch(error => console.error('Error fetching data:', error));
+},[]);
   
     return (
       <React.Fragment> 
@@ -27,8 +28,11 @@ function Results() {
           <SearchBar placeholder="Search..." data={data} />
           </div>
         <div className="form-container">
-            <h1>Here are your results: </h1>
-        <Form />  
+          {searched && searchResults.length === 0 ? (
+            <p>No search found</p>
+          ) : (
+            <Form /> 
+          )}
         </div>
       </div>
       </React.Fragment>
