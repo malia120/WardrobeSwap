@@ -10,16 +10,25 @@ import ShowListing from './ShowListing'
 
 export const SearchBar = ({ placeholder, data }) => {
   const [search, setSearch] = useState('')
+  const [searchResults, setSearchResults] = useState([]);
 
   const handleInputChange = (event) => {
     const { value } = event.target;
     setSearch(value);
   };
+
+  const handleSearch = () => {
+    const results = data.filter(item =>
+      item.title.toLowerCase().includes(search.toLowerCase())
+    );
+    setSearchResults(results);
+  };
+
   return (
     <div className='input-wrapper'>
         <FaSearch id="search-icon"/>
         <input placeholder={placeholder} value={search} onChange={handleInputChange} />
-        <button id="search-button">Search</button>
+        <button id="search-button" onClick={handleSearch}>Search</button>
         <div className='result'>
         {Array.isArray(data) && data.map((listing, index) => (
            <a key={index} className="Listing" href={ShowListing} target="_blank">

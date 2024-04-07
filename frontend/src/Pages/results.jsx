@@ -10,12 +10,13 @@ import  Form from "../Components/Form";
  */
 
 function Results() {
+  const [data] = useState([]); 
     return (
       <React.Fragment> 
         <Navbar />
         <div className="App"> 
           <div className="search-bar-holder">
-            <SearchBar  />
+          <SearchBar placeholder="Search..." data={data} />
           </div>
         <div className="form-container">
             <h1>Here are your results: </h1>
