@@ -9,19 +9,19 @@ import ShowListing from './ShowListing'
  */
 
 export const SearchBar = ({ placeholder, data, onSearch }) => {
-  const [search, setSearch] = useState('');
+  const [searchInput, setSearchInput] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [noResults, setNoResults] = useState(false);
 
   const handleInputChange = (event) => {
     const { value } = event.target;
-    setSearch(value);
+    setSearchInput(value);
   };
 
   const handleSearch = () => {
     if (!data || data.length === 0) return;
     const results = data.filter(item =>
-      item.title.toLowerCase().includes(search.toLowerCase())
+      item.title.toLowerCase().includes(searchInput.toLowerCase())
     );
     setSearchResults(results);
     onSearch(results);
@@ -29,20 +29,39 @@ export const SearchBar = ({ placeholder, data, onSearch }) => {
   };
   
   useEffect(() => {
+    if (!searchInput) return;
     handleSearch();
-  }, [search, data, onSearch]);
+
+  fetch(`/api/listing?query=${searchInput}`)
+    .then(response => response.json())
+    .then(data => {
+      if (data.listings && data.listings.length > 0) {
+        setSearchResults(data.listings);
+        onSearch(data.listings);
+        setNoResults(false);
+      } else {
+        setSearchResults([]);
+        onSearch([]);
+        setNoResults(true);
+      }
+    })
+    .catch(error => {
+      console.error('Error searching:', error);
+    });
+  }, [searchInput, data, onSearch]);
+  };
 
   return (
     <div className='input-wrapper'>
         <FaSearch id="search-icon"/>
-        <input placeholder={placeholder} value={search} onChange={handleInputChange} />
+        <input placeholder={placeholder} value={searchInput} onChange={handleInputChange} />
         <button id="search-button" onClick={handleSearch}>Search</button>
         <div className='result'>
         {noResults ? (
-          <p>No results found for "{search}"</p>
+          <p>No results found for "{searchInput}"</p>
         ) : (
         Array.isArray(searchResults) && searchResults.map((listing, index) => ( 
-           <a key={index} className="Listing" href={ShowListing} target="_blank">
+            <a key={index} className="Listing" href={ShowListing} target="_blank" rel="noreferrer">
             <p> {listing.title} </p>
               </a>
         ))
@@ -50,4 +69,4 @@ export const SearchBar = ({ placeholder, data, onSearch }) => {
         </div>
     </div>
   )
-}
+

@@ -201,6 +201,24 @@ def login():
             return jsonify({'message': 'Login successful'}), 200
         else:
             return jsonify({'error': 'Invalid username or password'}), 401
+        
+@app.route('/api/listing', methods=['GET'])
+def search_listing():
+    search_query = request.args.get('query')
+    if search_query:
+        results = Listing.query.filter(Listing.title.ilike(f"%{search_query}%")).all()
+        if results:
+            return jsonify({'listings': [
+                {'id': listing.id,
+                 'title': listing.title,
+                 'description': listing.description,
+                 'category': listing.category,
+                 'price': listing.price,
+                 'image': listing.image,
+                 'date_created': listing.date_created.strftime('%Y-%m-%d %H:%M:%S')
+                } for listing in results
+            ]}), 200
+        return jsonify({'listings': []}), 200
 
 if __name__ == "__main__":
     with app.app_context():
