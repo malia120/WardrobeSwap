@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa'
-import ShowListing from './ShowListing'
-import { Link } from 'react-router-dom';
+ import { Link } from 'react-router-dom';
 
 /**
  * Component showing a search bar with an input and a search button.
@@ -23,6 +22,7 @@ export const SearchBar = ({ placeholder, data, onSearch }) => {
     if (!data || data.length === 0) return;
     const results = data.filter(item =>
       item.title.toLowerCase().includes(searchInput.toLowerCase())
+
       
       
     );
