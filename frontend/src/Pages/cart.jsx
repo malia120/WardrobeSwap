@@ -14,6 +14,7 @@ import { CartItem } from "../Components/cartItems";
 
 const Cart = () => {
     const { cartItems } = useContext(CartContext);
+    console.log('Rendering Cart component');
 
     return (
         <React.Fragment>
