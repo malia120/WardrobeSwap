@@ -16,6 +16,9 @@ export const SearchBar = ({ placeholder, data, onSearch }) => {
   const handleInputChange = (event) => {
     const { value } = event.target;
     setSearchInput(value);
+    if (value === "") {
+      setNoResults(false);
+    }
   };
 
   const handleSearch = () => {
