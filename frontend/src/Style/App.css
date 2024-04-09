@@ -665,6 +665,7 @@
   }
   
   .result {
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
@@ -676,4 +677,4 @@
     display: flex;
     flex-direction: column;
     z-index: 1;
-  }
+}

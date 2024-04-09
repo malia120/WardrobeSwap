@@ -206,7 +206,8 @@ def login():
 def search_listing():
     search_query = request.args.get('query')
     if search_query:
-        results = Listing.query.filter(Listing.title.ilike(f"%{search_query}%")).all()
+        first_letter = search_query.strip().lower()[0]
+        results = Listing.query.filter(Listing.title.ilike(f"{first_letter}%")).all()
         if results:
             return jsonify({'listings': [
                 {'id': listing.id,
@@ -219,6 +220,7 @@ def search_listing():
                 } for listing in results
             ]}), 200
         return jsonify({'listings': []}), 200
+    return jsonify({'error': 'No query provided'}), 400
 
 if __name__ == "__main__":
     with app.app_context():

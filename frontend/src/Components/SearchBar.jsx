@@ -63,11 +63,11 @@ export const SearchBar = ({ placeholder, data, onSearch }) => {
     <div className='input-wrapper'>
         <FaSearch id="search-icon"/>
         <input placeholder={placeholder} value={searchInput} onChange={handleInputChange} />
-        <button id="search-button" onClick={handleSearch}>Search</button>
+        {searchInput && (
         <div className='result'>
-        {noResults ? (
-          <p>No results found for "{searchInput}"</p>
-        ) : (
+          {noResults ? (
+            <p>No results found for "{searchInput}"</p>
+          ) : (
         Array.isArray(searchResults) && searchResults.map((listing, index) => ( 
           <Link to={`/listing/${listing.id}`} key={listing.id} className="Listing">
           <p>{listing.title}</p>
@@ -75,6 +75,8 @@ export const SearchBar = ({ placeholder, data, onSearch }) => {
         ))
       )}
         </div>
+      )}
+      <button id="search-button" onClick={handleSearch}>Search</button>
     </div>
   );
 };
