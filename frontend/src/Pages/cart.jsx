@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import {  Navbar  } from "../Components/Navbar";
 import { CartContext } from "../Components/CartContext";
 import { CartItem } from "../Components/cartItems";
+import {  Link, Navigate } from 'react-router-dom';
+
 
 
 /**
@@ -12,9 +14,13 @@ import { CartItem } from "../Components/cartItems";
 
  */
 
-const Cart = () => {
+const Cart = (user) => {
     const { cartItems } = useContext(CartContext);
     console.log('Rendering Cart component');
+
+    if (!user) {
+        return <Navigate to="/login" replace />;
+      }
 
     return (
         <React.Fragment>

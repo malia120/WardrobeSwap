@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import {FaBars, FaTimes} from "react-icons/fa"
 import { Link } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";

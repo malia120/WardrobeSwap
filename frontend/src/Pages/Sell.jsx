@@ -2,6 +2,7 @@ import React from 'react';
 import {  Navbar  } from "../Components/Navbar";
 import { SearchBar } from "../Components/SearchBar";
 import  Form from "../Components/Form";
+import {  Link, Navigate } from 'react-router-dom';
 
 /**
  * Page that shows the Sell page of the website.
@@ -9,7 +10,12 @@ import  Form from "../Components/Form";
  * @returns  Sell components.
  */
 
-function Sell() {
+function Sell(user) {
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
     return (
       <React.Fragment> 
         <Navbar />

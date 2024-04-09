@@ -13,6 +13,7 @@ import LoginPage from "./Pages/LoginPage";
 import SignUpPage from "./Pages/SignUpPage";
 import ListingDisplay from './Components/ListingDisplay';
 import { CartContextProvider } from "./Components/CartContext";
+import PrivateRoute from "./Components/PrivateRoute";
 
 /**
  * Main App component that sets up the routing for different pages.
@@ -22,6 +23,9 @@ import { CartContextProvider } from "./Components/CartContext";
 
 function App() {
   const [listings, setListings] = useState([]);
+  const [user, setUser] = React.useState(null);
+  const handleLogin = () => setUser(fetch("http://127.0.0.1:5000/api/signup"));
+  const handleLogout = () => setUser(null);
 
   useEffect(() => {
     fetch("http://127.0.0.1:5000/api/listing")
@@ -40,10 +44,10 @@ function App() {
         <Route path="/children" element={<Children />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/this-platform" element={<ThisPlatform />} />
-        <Route path="/sell" element={<Sell />} />
+        <Route path="/sell" element={<PrivateRoute user={user}><Sell /></PrivateRoute>}/>
+        <Route path="/cart" element={<PrivateRoute user={user}><Cart /></PrivateRoute>}/>
         <Route path=':item.id' element={<ShowListing/>}/>
         <Route path="/listings/:id" element={<ListingDisplay />} />
-        <Route path="/cart" element={<Cart />} />  
         <Route path="/login" element={<LoginPage />} /> 
         <Route path="/signup" element={<SignUpPage />} />
       </Routes>
