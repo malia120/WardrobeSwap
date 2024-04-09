@@ -2,6 +2,7 @@ import { useRef } from "react";
 import {FaBars, FaTimes} from "react-icons/fa"
 import { Link } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
+import { AuthContext } from '../Components/AuthContext';
 import "../Style/App.css";
 
 /**
@@ -15,7 +16,7 @@ import "../Style/App.css";
 
 export function Navbar() {
     // useRef to access the navigation element
-
+    const { isAuthenticated, logout } = useContext(AuthContext);
     const navRef = useRef();
 
      /**
@@ -23,6 +24,9 @@ export function Navbar() {
      * 
      * @function
      */
+     const handleLogout = () => {
+        logout();
+      };
 
     const showNavBar = () => {
         navRef.current.classList.toggle("responsive_nav");
@@ -38,13 +42,16 @@ export function Navbar() {
                 <Link to="/about-us">About us</Link>
                 <Link to="/this-platform">This platform</Link>
                 </nav>
-                <div className="auth-buttons">
-                    <Link to="/login" className="auth-button">Login</Link>
-                    <Link to="/cart" className="auth-button cart-button"><FaCartShopping /></Link>
-                </div>
-                <button className="nav-button nav-close-button" onClick={showNavBar}>
-                    <FaTimes/>
-                </button>
+                {isAuthenticated ? (
+            <button onClick={handleLogout}>Logout</button>
+                ) : (
+                <Link to="/login" className="auth-button">
+                    Login
+                </Link>
+                )}
+            <button className="nav-button nav-close-button" onClick={showNavBar}>
+                <FaTimes/>
+            </button>
             <button className="nav-button" onClick={showNavBar}>
                 <FaBars/>
             </button>
