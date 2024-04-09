@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import {  Navbar  } from "../Components/Navbar";
 import { CartContext } from "../Components/CartContext";
 import { CartItem } from "../Components/cartItems";
-import {  Link, Navigate } from 'react-router-dom';
-
 
 
 /**

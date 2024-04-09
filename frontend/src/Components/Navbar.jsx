@@ -16,7 +16,7 @@ import "../Style/App.css";
 
 export function Navbar() {
     // useRef to access the navigation element
-    const { isAuthenticated, logout } = useContext(AuthContext);
+    const { isAuthenticated, logout } = useContext(AuthContext); 
     const navRef = useRef();
 
      /**

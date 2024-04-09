@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from "react-router-dom"; 
+import { AuthContext } from './AuthContext';
 import '../Style/App.css'
 
 const Login = () => {
 
+    const { login } = useContext(AuthContext); 
     const [formData, setFormData] = useState({username: '', email: '', password: ''});
     const [submitted, setSubmitted] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
@@ -16,6 +18,13 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const success = await login(formData);
+        if (success) {
+          setSubmitted(true);
+          navigate("/");
+        } else {
+          setErrorMessage("The username or password does not match");
+        }
 
         try {
             const response = await fetch('http://localhost:5000/api/login', {
@@ -76,6 +85,6 @@ const Login = () => {
         </div>
     </div>
   );
-}
+};
 
 export default Login;

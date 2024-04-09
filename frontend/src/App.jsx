@@ -14,6 +14,7 @@ import SignUpPage from "./Pages/SignUpPage";
 import ListingDisplay from './Components/ListingDisplay';
 import { CartContextProvider } from "./Components/CartContext";
 import PrivateRoute from "./Components/PrivateRoute";
+import { AuthProvider } from "./Components/AuthContext";
 
 /**
  * Main App component that sets up the routing for different pages.
@@ -37,6 +38,7 @@ function App() {
   return (
     <React.Fragment>
       <CartContextProvider listings={listings}>
+      <AuthProvider> 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/women" element={<Women />} />
@@ -51,6 +53,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} /> 
         <Route path="/signup" element={<SignUpPage />} />
       </Routes>
+      </AuthProvider>
       </CartContextProvider>
     </React.Fragment>
   );
