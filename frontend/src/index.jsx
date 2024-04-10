@@ -16,12 +16,19 @@ import { CartContextProvider } from './Components/CartContext';
  */
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const initialOptions = {
+  "client-id": "AeNWP5JJwk9UiNJJ3XdOTaKfwn4h9S48HsEou3r62ER1VxPx8eSmwM6ZcBhx69f8iK3Cr_5phJqCWM9-",
+  currency: "GBP",
+  intent: "capture",
+};
 
 root.render(
   <React.StrictMode>
     <BrowserRouter>
     <CartContextProvider>
-      <App />
+    <PayPalScriptProvider options={initialOptions}>
+          <App />
+        </PayPalScriptProvider>
     </CartContextProvider>
     </BrowserRouter>
   </React.StrictMode>,
