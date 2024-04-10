@@ -9,7 +9,7 @@ export const CartItem = ({ item }) => {
       removeFromCart(item.id);
     };    
 
-    return (
+ return (
       <React.Fragment>
     <div className='card'>
         <div className='card-body'>

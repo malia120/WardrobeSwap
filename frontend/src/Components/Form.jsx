@@ -107,7 +107,7 @@ function Form() {
                 </div>
                 <div className="formGroup">
                     <label>Price</label>
-                    <input name="Price" placeholder="£0.00"/>
+                    <input name="Price" type="number" step="1" placeholder="£0.00" />
                 </div>
                 <div className="formGroup">
                   <label>Image</label>

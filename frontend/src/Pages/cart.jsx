@@ -20,11 +20,14 @@ const Cart = () => {
     if (!isAuthenticated) {
       return <Navigate to="/login" replace />;
     }
+    const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
 
     return (
         <React.Fragment>
             <Navbar />
-            <div className="Cart">
+            <div className="App">
+              <div className="form-container">
+              <div className="Cart">
                 <h1 className="Cart-heading">Your Cart</h1>
                     {cartItems.length > 0 ? (
             cartItems.map((item) => (
@@ -37,6 +40,8 @@ const Cart = () => {
                 </div>
                 )}
             </div>
+              </div>
+          </div>
             <footer/> 
         </React.Fragment>
     
