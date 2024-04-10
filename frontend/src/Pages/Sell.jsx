@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {  Navbar  } from "../Components/Navbar";
 import { SearchBar } from "../Components/SearchBar";
 import  Form from "../Components/Form";
 import {  Link, Navigate } from 'react-router-dom';
+import { AuthContext } from '../Components/AuthContext';
 
 /**
  * Page that shows the Sell page of the website.
@@ -10,12 +11,13 @@ import {  Link, Navigate } from 'react-router-dom';
  * @returns  Sell components.
  */
 
-function Sell(user) {
+const Sell = () => {
+  const { isAuthenticated } = useContext(AuthContext);
 
-  if (!user) {
+  if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
-  }
-
+  
+} else {
     return (
       <React.Fragment> 
         <Navbar />
@@ -32,6 +34,7 @@ function Sell(user) {
       </div>
       </React.Fragment>
     );
-}
+  }
+};
 
 export default Sell;
