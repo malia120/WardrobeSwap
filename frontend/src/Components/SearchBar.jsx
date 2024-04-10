@@ -18,17 +18,17 @@ export const SearchBar = ({ placeholder, data, onSearch }) => {
     setSearchInput(value);
     if (value === "") {
       setNoResults(false);
+      setSearchResults([]); 
     }
   };
 
   const handleSearch = () => {
     if (!data || data.length === 0) return;
+    
     const results = data.filter(item =>
-      item.title.toLowerCase().includes(searchInput.toLowerCase())
-
-      
-      
+      item.title.toLowerCase().startsWith(searchInput.toLowerCase())
     );
+  
     setSearchResults(results);
     if (typeof onSearch === 'function') { 
       onSearch(results);

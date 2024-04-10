@@ -395,8 +395,10 @@
   */
  
  .Card {
-     display: flex;
-     flex-wrap: wrap;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ gap: 20px; 
  }
  
  /**
@@ -406,14 +408,16 @@
  .Cardview {
  background-color: white;
  border: 1px solid #ccc;
- margin: 10px;
  padding: 10px;
- width: 300px; 
- }
+ width: 300px;
+ border-radius: 10px;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+ transition: transform 0.3s, box-shadow 0.3s;
+}
  
  .Cardview:hover{
- transform: translateY(-0.5rem);
- box-shadow: 0.5rem 0.75rem 1.5rem #bbbbbb;
+ transform: translateY(-5px); 
+ box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
  }
  
  /**
@@ -423,6 +427,7 @@
  .Card img {
  width: 100%;
  height: auto;
+ border-radius: 10px;
  }
  
  /**
@@ -431,11 +436,13 @@
  
  .Card_info {
  padding: 16px;
+ 
  }
  
  .Card_info h1 {
  font-size: 18px;
  margin-bottom: 8px;
+ color: #333;
  }
  
  /**
@@ -454,8 +461,7 @@
  .Card_Category,
  .Card_price,
  .Card_date {
- font-size: 1.5rem;
- font-weight: bold;
+ font-size: 1.2rem; 
  margin-top: 8px;
  color: #777;
  }
@@ -465,7 +471,23 @@
   */
  .Card_description {
  margin-top: 8px;
+ color: #555;
  }
+
+ .addToCart {
+ background-color: var(--mainColour);
+ color: var(--textColour);
+ border: none;
+ border-radius: 5px;
+ padding: 10px 20px;
+ margin-top: 10px;
+ cursor: pointer;
+ transition: background-color 0.3s;
+}
+
+.addToCart:hover {
+ background-color: var(--secondaryColour);
+}
  
  /**
   * "Submit" button style.

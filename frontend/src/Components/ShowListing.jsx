@@ -38,7 +38,7 @@ export function ShowListing() {
       <div className='Card'>
         {initialData.map(item => (
         <div key={item.id} className="Cardview">
-        <Link to={`/listings/${item.id}`}>
+        <Link to={`/listings/${item.id}`} style={{ textDecoration: 'none' }}>
         <img src={`http://localhost:5000/uploads/${item.image}`} alt='image' className="cImage" />
             <div className="Card_info">
               <h1 className="Name">{(item.title)}</h1>
