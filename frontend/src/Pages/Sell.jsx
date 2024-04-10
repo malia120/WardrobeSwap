@@ -16,8 +16,8 @@ const Sell = () => {
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
-  
-} else {
+  }
+    
     return (
       <React.Fragment> 
         <Navbar />
@@ -34,7 +34,6 @@ const Sell = () => {
       </div>
       </React.Fragment>
     );
-  }
-};
+}
 
 export default Sell;

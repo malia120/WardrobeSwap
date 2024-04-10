@@ -25,8 +25,6 @@ import { AuthProvider } from "./Components/AuthContext";
 function App() {
   const [listings, setListings] = useState([]);
   const [user, setUser] = React.useState(null);
-  const handleLogin = () => setUser(fetch("http://127.0.0.1:5000/api/signup"));
-  const handleLogout = () => setUser(null);
 
   useEffect(() => {
     fetch("http://127.0.0.1:5000/api/listing")
@@ -34,6 +32,14 @@ function App() {
       .then(data => setListings(data.listings))
       .catch(error => console.error("Error fetching listings:", error));
   }, []);
+
+  const handleLogin = (userData) => {
+    setUser(userData);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+  };
 
   return (
     <React.Fragment>
@@ -46,11 +52,11 @@ function App() {
         <Route path="/children" element={<Children />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/this-platform" element={<ThisPlatform />} />
-        <Route path="/sell" element={<PrivateRoute user={user}><Sell /></PrivateRoute>}/>
-        <Route path="/cart" element={<PrivateRoute user={user}><Cart /></PrivateRoute>}/>
+        <Route path="/sell" element={<PrivateRoute><Sell /></PrivateRoute>}/>
+        <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>}/>
         <Route path=':item.id' element={<ShowListing/>}/>
         <Route path="/listings/:id" element={<ListingDisplay />} />
-        <Route path="/login" element={<LoginPage />} /> 
+        <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignUpPage />} />
       </Routes>
       </AuthProvider>
