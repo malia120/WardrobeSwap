@@ -9,7 +9,7 @@ import { AuthContext } from '../Components/AuthContext';
 /**
  * Page that shows the Home page of the website.
  *
- * @returns  Home components.
+ * @returns  cart components.
 
  */
 

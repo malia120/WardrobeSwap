@@ -15,6 +15,7 @@ import ListingDisplay from './Components/ListingDisplay';
 import { CartContextProvider } from "./Components/CartContext";
 import PrivateRoute from "./Components/PrivateRoute";
 import { AuthProvider } from "./Components/AuthContext";
+import Checkout from "./Pages/Checkout";
 
 /**
  * Main App component that sets up the routing for different pages.
@@ -58,6 +59,7 @@ function App() {
         <Route path="/listings/:id" element={<ListingDisplay />} />
         <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/checkout" element={< Checkout/>} />
       </Routes>
       </AuthProvider>
       </CartContextProvider>
