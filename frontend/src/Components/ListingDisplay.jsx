@@ -49,17 +49,26 @@ const ListingDisplay = ({ listingProp }) => {
                 <div className="sell-heading">
                     <h1>Have a look!</h1>
                 </div>
+                <div className="listing-container">
+            <div className="listing-image-container">
+              <img
+                src={`http://localhost:5000/uploads/${listing.image}`}
+                alt="image"
+                className="cImage"
+              />
+            </div>
         
-        <div className="listingDisplay">
-            <h1>Listing Detail</h1>
+            <div className="listing-info">
             <p>Item Number: {listing.id}</p>
             <p>Title: {listing.title}</p>
-            <img src={`http://localhost:5000/uploads/${listing.image}`} alt='image' className="cImage" />
             <p>Description: {listing.description}</p>
             <p>Category: {listing.category}</p>
             <p>Price: £{listing.price}</p>
             <p>Date Created: {listing.date_created}</p>
-            <button className="addToCart" onClick={handleAddToCart}> Add to Cart </button>
+            <button className="addToCart" onClick={handleAddToCart}>
+                Add to Cart
+            </button>
+            </div>
             </div>
             </div>
             </div>

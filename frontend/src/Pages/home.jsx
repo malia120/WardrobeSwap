@@ -3,6 +3,7 @@ import {  Navbar  } from "../Components/Navbar";
 import { SearchBar } from "../Components/SearchBar";
 import { Background } from "../Components/Background"
 import { ShowListing } from "../Components/ShowListing";
+import Footer from "../Components/Footer";
 
 
 /**
@@ -27,7 +28,9 @@ function Home() {
         </div> 
       <div style={{ backgroundColor: "#E8DFE0" }}>
             <ShowListing />
-          </div>    </div>
+          </div>   
+          <footer/> 
+          </div>
   </React.Fragment> 
 
   );

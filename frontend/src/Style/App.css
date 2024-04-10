@@ -700,3 +700,49 @@
     flex-direction: column;
     z-index: 1;
 }
+.listing-container {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .listing-image-container {
+    flex: 1;
+  }
+  
+  .listing-image-container img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .listing-info {
+    flex: 1;
+    padding-left: 20px;
+  }
+  
+  .listing-info p {
+    margin-bottom: 10px;
+  }
+  
+  .listing-info button {
+    background-color: var(--mainColour);
+    color: var(--textColour);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .listing-info button:hover {
+    background-color: var(--secondaryColour);
+  }
+
+  footer {
+    background-color: var(--mainColour);
+    color: var(--textColour);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
