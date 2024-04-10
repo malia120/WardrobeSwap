@@ -1,4 +1,4 @@
-mport React, { useState } from "react";
+import React, { useState } from "react";
 
 function Checkout() {
     const [checkout, setCheckout] = useState(false);
