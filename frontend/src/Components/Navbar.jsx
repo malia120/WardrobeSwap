@@ -42,13 +42,18 @@ export function Navbar() {
                 <Link to="/about-us">About us</Link>
                 <Link to="/this-platform">This platform</Link>
                 </nav>
+            <div className="auth-buttons">
                 {isAuthenticated ? (
-            <button onClick={handleLogout}>Logout</button>
+            <>
+            <button className="auth-button" onClick={handleLogout}>Logout</button>
+            <Link to="/cart" className="auth-button cart-button">
+              <FaCartShopping />
+            </Link>
+          </>
                 ) : (
-                <Link to="/login" className="auth-button">
-                    Login
-                </Link>
+                <Link to="/login" className="auth-button">Login</Link>
                 )}
+             </div>
             <button className="nav-button nav-close-button" onClick={showNavBar}>
                 <FaTimes/>
             </button>

@@ -13,7 +13,7 @@ import { AuthContext } from '../Components/AuthContext';
 
  */
 
-const Cart = (user) => {
+const Cart = () => {
     const { cartItems } = useContext(CartContext);
     const { isAuthenticated } = useContext(AuthContext);
 
