@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Payment from "../Components/Payment";
 
 function Checkout() {
     const [checkout, setCheckout] = useState(false);
@@ -6,10 +7,12 @@ function Checkout() {
     return (
         <div className="App">
             {checkout ? (
-                <div>
-                    <h2>Payment Successful!</h2>
-                    <p>Thank you for your purchase.</p>
-                </div>
+                <Payment
+                onSuccess={() => {
+                }}
+                onError={(error) => {
+                }}
+            />
             ) : (
                 <button onClick={() => setCheckout(true)}>Click here to pay</button>
             )}

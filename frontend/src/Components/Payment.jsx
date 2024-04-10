@@ -1,7 +1,7 @@
 import React from 'react'
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-export default function Payment() {
+function Payment({ onSuccess, onError }) {    
     const paypalButtons = useRef();
 
     useEffect(() => {
@@ -11,7 +11,19 @@ export default function Payment() {
         }
         
         window.paypal.Buttons({
-            createOrder: function () {
+            createOrder: (data, actions) => {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: "10.00", 
+                            currency_code: "GBP" 
+                        }
+                    }]
+                });
+            },
+            onApprove: async (data, actions) => {
+                const order = await actions.order.capture();
+                onSuccess(order);
 }
         }).render(paypalButtons.current);
             }, [onSuccess, onError]);
@@ -22,4 +34,5 @@ export default function Payment() {
                 </div>
             );
 };
+export default Payment;
 
