@@ -22,13 +22,14 @@ function Home() {
       </div>  
       <Background />
         <div className="sell-heading">
-            <h1>Browse around!</h1>
+            <h1>Browse around!</h1><ShowListing />
         </div> 
       <div style={{ backgroundColor: "#E8DFE0" }}>
-            <ShowListing />
+      <footer/> 
           </div>   
           </div>
-          <footer/> 
+          
+
   </React.Fragment> 
 
   );

@@ -58,6 +58,7 @@ function Men() {
           ))}
         </div>
       </div>
+      <footer/> 
     </React.Fragment>
   );
 }

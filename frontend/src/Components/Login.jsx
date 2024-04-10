@@ -60,7 +60,7 @@ const Login = () => {
   return (
     <div className='Auth-container'>
         <div className="header">
-            <div className='text'>Login</div>
+            <div className='text'>Login First!</div>
             <div className='underline'></div>
         </div>
         <form className='inputs' onSubmit={handleSubmit}>
