@@ -20,7 +20,9 @@ const Cart = () => {
     if (!isAuthenticated) {
       return <Navigate to="/login" replace />;
     }
-    const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
+    const totalPrice = cartItems.reduce((total, item) => total + parseFloat(item.price), 0);
+
+    const totalPriceString = totalPrice.toFixed(2);
 
     return (
         <React.Fragment>
@@ -30,9 +32,16 @@ const Cart = () => {
               <div className="Cart">
                 <h1 className="Cart-heading">Your Cart</h1>
                     {cartItems.length > 0 ? (
-            cartItems.map((item) => (
+                  <React.Fragment>
+              {cartItems.map((item) => (
               <CartItem key={item.id} item={item} />
-            ))
+            ))}
+            <div className="Cart-total">
+                <p className="Cart-total-text">Total: £{totalPriceString}</p>
+                <button className="checkout-button">Checkout</button>
+            </div>
+            </React.Fragment>
+
           ) : (
             <div>
                     <p className="Cart-message">Your cart is currently empty. Add something to your cart before proceeding.</p>

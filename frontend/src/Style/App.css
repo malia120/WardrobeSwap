@@ -818,9 +818,9 @@
   }
   
   .listing-image {
-    width: 100%; /* Make the image fill its container */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 8px; /* Optional: Add border radius to image */
+    width: 100%; 
+    height: auto; 
+    border-radius: 8px; 
     object-fit: cover;
   }
   
@@ -829,7 +829,7 @@
   }
   
   .addToCart {
-    background-color: #007bff;
+    background-color: #dab692;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -839,5 +839,20 @@
   }
   
   .addToCart:hover {
-    background-color: #0056b3;
+    background-color:var(--secondaryColour);
   }
+
+  .checkout-button {
+    background-color: var(--mainColour);
+    color: var(--textColour);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.checkout-button:hover {
+    background-color: var(--secondaryColour);
+}
