@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 function Payment({ onSuccess, onError }) {    
@@ -24,8 +24,12 @@ function Payment({ onSuccess, onError }) {
             onApprove: async (data, actions) => {
                 const order = await actions.order.capture();
                 onSuccess(order);
-}
-        }).render(paypalButtons.current);
+            },
+            onError: (err) => {
+                onError(err);
+            }
+        }) 
+        .render(paypalButtons.current);
             }, [onSuccess, onError]);
 
             return (

@@ -4,6 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { CartContextProvider } from './Components/CartContext';
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+
 
 /**
  * Root showing of the React application.
