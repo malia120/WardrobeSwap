@@ -14,7 +14,7 @@ function LoginPage() {
         <Login/>
 
         </div>
-        
+        <footer/> 
     </React.Fragment>
 
     );

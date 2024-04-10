@@ -24,7 +24,7 @@ function AboutUs() {
         </div>
         </div>
         </div>
-      
+        <footer/> 
       </React.Fragment>
   );
 }

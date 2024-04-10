@@ -37,7 +37,7 @@ const Cart = () => {
                 </div>
                 )}
             </div>
-            
+            <footer/> 
         </React.Fragment>
     
     );

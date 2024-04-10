@@ -53,11 +53,13 @@ function Men() {
                 <div className="Card date">{item.date_created}</div>
               </div>
             </div>
+            
           </div>
         ))}
       </div>
+      
       </div>
-    
+      <footer/> 
     </React.Fragment>
     );
 }

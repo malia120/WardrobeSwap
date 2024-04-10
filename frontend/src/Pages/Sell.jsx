@@ -32,6 +32,7 @@ const Sell = () => {
         <Form />  
         </div>
       </div>
+      <footer/> 
       </React.Fragment>
     );
 }

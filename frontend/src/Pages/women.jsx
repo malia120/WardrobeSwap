@@ -59,7 +59,7 @@ function Women() {
         </div>
       </div>
     
-    
+      <footer/> 
     </React.Fragment>
   );
 }

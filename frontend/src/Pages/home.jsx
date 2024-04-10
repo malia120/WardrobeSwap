@@ -3,8 +3,6 @@ import {  Navbar  } from "../Components/Navbar";
 import { SearchBar } from "../Components/SearchBar";
 import { Background } from "../Components/Background"
 import { ShowListing } from "../Components/ShowListing";
-import Footer from "../Components/Footer";
-
 
 /**
  * Page that shows the Home page of the website.
@@ -29,8 +27,8 @@ function Home() {
       <div style={{ backgroundColor: "#E8DFE0" }}>
             <ShowListing />
           </div>   
-          <footer/> 
           </div>
+          <footer/> 
   </React.Fragment> 
 
   );

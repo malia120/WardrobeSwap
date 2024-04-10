@@ -23,8 +23,9 @@ function ThisPlatform() {
             <h1>Let me tell you more about our platform...</h1>
         </div>
         </div>
+
       </div>
-    
+      <footer/> 
     
     </React.Fragment>
   );

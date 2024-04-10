@@ -15,6 +15,7 @@ function SignUpPage() {
         <SignUp />
 
         </div>
+        <footer/> 
         
     </React.Fragment>
 

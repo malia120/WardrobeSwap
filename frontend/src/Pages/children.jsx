@@ -57,7 +57,7 @@ function Children() {
         ))}
       </div>
       </div>
-    
+      <footer/> 
     </React.Fragment>
     );
 }
