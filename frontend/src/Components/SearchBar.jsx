@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FaSearch } from 'react-icons/fa'
- import { Link } from 'react-router-dom';
-
+import { Link, useParams } from 'react-router-dom';
+import { CartContext } from './CartContext';
 /**
  * Component showing a search bar with an input and a search button.
  *
@@ -12,6 +12,10 @@ export const SearchBar = ({ placeholder, data, onSearch }) => {
   const [searchInput, setSearchInput] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [noResults, setNoResults] = useState(false);
+  const { id } = useParams();
+  const [listing, setListing] = useState(null);
+  const [error, setError] = useState(null);
+  const {addToCart} = useContext(CartContext)
 
   const handleInputChange = (event) => {
     const { value } = event.target;
@@ -59,6 +63,19 @@ export const SearchBar = ({ placeholder, data, onSearch }) => {
     });
   }, [searchInput, data, onSearch]);
 
+  useEffect(() => {
+    if (!id) return;
+    fetch(`http://127.0.0.1:5000/api/listing/${id}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch listing');
+        } return response.json();
+        })
+        .then(data => setListing(data))
+        .catch(error => setError(error.message));
+        
+}, [id]);
+
   return (
     <div className='input-wrapper'>
         <FaSearch id="search-icon"/>
@@ -70,8 +87,8 @@ export const SearchBar = ({ placeholder, data, onSearch }) => {
           ) : (
         Array.isArray(searchResults) && searchResults.map((listing, index) => ( 
           <Link to={`/listing/${listing.id}`} key={listing.id} className="Listing">
-          <p>{listing.title}</p>
-        </Link>
+              <p>{listing.title}</p>
+            </Link>
         ))
       )}
         </div>
