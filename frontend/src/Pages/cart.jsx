@@ -38,7 +38,9 @@ const Cart = () => {
             ))}
             <div className="Cart-total">
                 <p className="Cart-total-text">Total: £{totalPriceString}</p>
-                <button className="checkout-button">Checkout</button>
+                <Link to="/checkout">
+                    <button className="checkout-button">Checkout</button>
+                  </Link>
             </div>
             </React.Fragment>
 
