@@ -28,7 +28,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
     <CartContextProvider>
-    <PayPalScriptProvider options={initialOptions}>
+        <PayPalScriptProvider options={initialOptions}>
           <App />
         </PayPalScriptProvider>
     </CartContextProvider>

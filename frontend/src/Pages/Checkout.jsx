@@ -8,13 +8,13 @@ function Checkout() {
         <div className="App">
             {checkout ? (
                 <Payment
-                onSuccess={() => {
-                }}
-                onError={(error) => {
-                }}
-            />
+                    onSuccess={() => {
+                    }}
+                    onError={(error) => {
+                    }}
+                />
             ) : (
-                <button onClick={() => setCheckout(true)}>Click here to pay</button>
+                <button onClick={() => setCheckout(true)}>Checkout</button>
             )}
         </div>
     );
