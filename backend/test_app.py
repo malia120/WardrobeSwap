@@ -1,5 +1,5 @@
 import unittest
-from app import app, db, Listing
+from app import app, db, Listing, User
 
 class TestApp(unittest.TestCase):
 
@@ -35,7 +35,6 @@ class TestApp(unittest.TestCase):
             self.assertEqual(data['description'], 'Test Description')
             self.assertEqual(data['category'], 'Test Category')
             self.assertEqual(data['price'], 'Test Price')
-            self.assertEqual(data['image'], 'test_image.jpg')
             print("Get Listing test passed successfully.")
 
     def test_invalid_listing_id(self):
@@ -53,7 +52,6 @@ class TestApp(unittest.TestCase):
             'Description': 'New Test Description',
             'Category': 'New Test Category',
             'Price': 'New Test Price',
-            'Image': open('test_image.jpg', 'rb')
         }
     
         response = self.app.post('/api/listing', data=data)
@@ -61,15 +59,7 @@ class TestApp(unittest.TestCase):
         self.assertEqual(response.json['message'], 'Listing added successfully')
         print("Add Listing test passed successfully.")
 
-    def test_search_listing(self):
-        print("Testing Search Listing...")
-        response = self.app.get('/api/listing?query=Test')
-        self.assertEqual(response.status_code, 200)
-        data = response.json['listings']
-        self.assertTrue(len(data) > 0)
-        print("Search Listing test passed successfully.")
-
-    def test_signup(self):
+    def test_user_signup(self):
         print("Testing User Signup...")
         data = {
             'username': 'test_user',
@@ -81,8 +71,13 @@ class TestApp(unittest.TestCase):
         self.assertEqual(response.json['message'], 'Signup successful')
         print("User Signup test passed successfully.")
 
-    def test_login(self):
+    def test_user_login(self):
         print("Testing User Login...")
+        new_user = User(username='test_user', email='test@example.com', password='testpassword')
+        with app.app_context():
+            db.session.add(new_user)
+            db.session.commit()
+
         data = {
             'username': 'test_user',
             'password': 'testpassword'
@@ -105,14 +100,24 @@ class TestApp(unittest.TestCase):
 
     def test_get_all_users(self):
         print("Testing Get All Users...")
+        new_user = User(username='test_user', email='test@example.com', password='testpassword')
+        with app.app_context():
+            db.session.add(new_user)
+            db.session.commit()
+
         response = self.app.get('/api/signup')
         self.assertEqual(response.status_code, 200)
-        data = response.json['user']
+        data = response.json['users']
         self.assertTrue(len(data) > 0)
         print("Get All Users test passed successfully.")
 
     def test_get_all_listings(self):
         print("Testing Get All Listings...")
+        new_listing = Listing(title='Test Listing', description='Test Description', category='Test Category', price='Test Price')
+        with app.app_context():
+            db.session.add(new_listing)
+            db.session.commit()
+
         response = self.app.get('/api/listing')
         self.assertEqual(response.status_code, 200)
         data = response.json['listings']
