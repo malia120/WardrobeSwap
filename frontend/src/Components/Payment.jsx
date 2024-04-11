@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-function Payment({ onSuccess, onError }) {
+function Payment({ totalPrice, onSuccess, onError }) {
     const paypalButtons = useRef();
 
     useEffect(() => {
@@ -31,7 +31,7 @@ function Payment({ onSuccess, onError }) {
                 }
             })
             .render(paypalButtons.current);
-    }, [onSuccess, onError]);
+    }, [totalPrice, onSuccess, onError]);
 
     return <div ref={paypalButtons}></div>;
 }
