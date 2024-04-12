@@ -1,0 +1,33 @@
+READ.ME
+User Manual 
+To run the code, the user must do the following step:
+1) Must have python installed.
+2) Must support React JS
+There should be 2 terminals.
+Terminal 1: CD Backend
+The users should then install the following components in terminal 1 (Backend):
+pip install Flask-SQLAlchemy
+pip install flask-cors
+pip install Flask-Migrate
+ Final Year Report – Maliha Ahmed
+53
+pip install Flask-Bcrypt
+The user should then activate the Virtual Machine, by doing the following command:
+Venv/Scripts/Activate:
+However, if the running script is disabled:
+You can try this:
+\Venv\Scripts\Activate.ps1
+After the Virtual Machine is running, do the following command depending on your Python 
+version.
+Older version of python:
+python app.py
+However, if the user is using a newer version they should do:
+python3 app.py
+The user should he be presented with a link which is the navigation to the API. They must click 
+as the website does not run without the API.
+a
+Terminal 2: Cd Frontend
+add this into the terminal:
+npx eslint –cache
+And then do 
+Npm start
