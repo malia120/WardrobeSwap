@@ -53,6 +53,18 @@ class Listing(db.Model):
         return '<Title %r>' % self.id
     
 class User(db.Model):
+    
+    """
+    Represents a user in the application.
+
+    Attributes: 
+    - id (int): The unique primary key for the user.
+    - username (str): The username of the user.
+    - email (str): The email address of the user.
+    - password (str): The hashed password of the user.
+    - date_created (datetime): The timestamp indicating when the user was created.
+    """
+    
     __bind_key__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
@@ -132,8 +144,28 @@ def Api():
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
+"""
+    Returns a file from the upload directory.
+
+    Args:
+    filename (str): The name of the file to return.
+
+    Returns:
+    file: The requested file.
+    """
+
 @app.route('/api/listing/<int:id>', methods=['GET'])
 def get_listing(id):
+    
+    """
+    Retrieves a listing by its ID.
+
+    Args:
+    id (int): The ID of the listing to retrieve.
+
+    Returns:
+    JSON: Information about the specified listing.
+    """
 
     listing = Listing.query.get(id)
     if not listing:
@@ -151,6 +183,19 @@ def get_listing(id):
 
 @app.route('/api/signup', methods=['POST', 'GET'])
 def signup():
+    
+    """
+    Handles user sign-up requests.
+
+    POST Request:
+    Creates a new user account.
+
+    GET Request:
+    Retrieves information about all users.
+
+    Returns:
+    JSON: Confirmation message for successful sign-up or information about users.
+    """
     if request.method == 'POST':
         data = request.json
         username = data.get('username')
@@ -189,6 +234,16 @@ def signup():
 
 @app.route('/api/login', methods=['POST'])
 def login():
+    
+    """
+    Handles user login requests.
+
+    POST Request:
+    Authenticates a user and logs them into the system.
+
+    Returns:
+    JSON: Confirmation message for successful login or error message for failed login.
+    """
     if request.method == 'POST':
         print("Login request received") 
         data = request.json
@@ -204,6 +259,14 @@ def login():
         
 @app.route('/api/listing', methods=['GET'])
 def search_listing():
+    
+    """
+    Handles search requests for listings.
+
+    Returns:
+    JSON: Listings matching the search query.
+    """
+    
     search_query = request.args.get('query')
     if search_query:
         first_letter = search_query.strip().lower()[0]

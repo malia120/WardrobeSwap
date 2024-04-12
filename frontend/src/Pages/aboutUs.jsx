@@ -4,9 +4,14 @@ import { SearchBar } from "../Components/SearchBar";
 
 /**
  * Page that shows the About Us of the website.
- *
+ * 
+ * @component
  * @returns  About us components.
- */
+ * React component to be regarded as the About Us page of the website
+ * This page gives information about mission, goals, technology and commitment of WardrobeSwap, a platform encourageing viable fashion practices
+ * //Usage in a React router setup:
+ * <Route path="/about" component={AboutUs} />
+  */
 
 function AboutUs() {
   return (
@@ -57,11 +62,11 @@ function AboutUs() {
                     Ready to swap your wardrobe? Sign up for WardrobeSwap today!
                   </p>
                 </div>
-               </div>
-                  </div>
+              </div>
             </div>
+          </div>
         </div>
-        </div>
+      </div>
       <footer />
     </React.Fragment>
   );
