@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import '../Style/App.css'
 
+/**
+ * Component for user signup.
+ * Allows users to input their username, email, and password to create an account.
+ * Handles form submission to the server for signup.
+ * Navigates to the login page after successful signup.
+ *
+ * @component
+ * @returns {JSX.Element} Signup form component.
+ */
+
 const SignUp = () => {
-    const [formData, setFormData] = useState({username: '', email: '', password: ''});
+    const [formData, setFormData] = useState({ username: '', email: '', password: '' });
     const [submitted, setSubmitted] = useState(false);
-    const [errorMessage, setErrorMessage] = useState(''); 
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
 
@@ -21,7 +31,7 @@ const SignUp = () => {
         try {
             const response = await fetch('http://localhost:5000/api/signup', {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json',},
+                headers: { 'Content-Type': 'application/json', },
                 body: JSON.stringify(formData),
             });
 
@@ -43,37 +53,37 @@ const SignUp = () => {
 
     if (submitted) {
         return (
-          <div className="FormSubmit">
-            <p>Thank you for submitting. Click here to Login into your account.</p>
-            <button onClick={() => navigate("/login")}>Login</button>
-          </div>
+            <div className="FormSubmit">
+                <p>Thank you for submitting. Click here to Login into your account.</p>
+                <button onClick={() => navigate("/login")}>Login</button>
+            </div>
         );
-      }
+    }
 
-  return (
-    
-    <div className='Auth-container'>
-        <div className="header">
-            <div className='text'>Sign up</div>
-            <div className='underline'></div>
+    return (
+
+        <div className='Auth-container'>
+            <div className="header">
+                <div className='text'>Sign up</div>
+                <div className='underline'></div>
+            </div>
+            <form className='inputs' onSubmit={handleSubmit}>
+                <div className='input'>
+                    <input type='text' name='username' placeholder='Username' value={formData.username} onChange={handleChange} />
+                </div>
+                <div className='input'>
+                    <input type='email' name='email' placeholder='Email' value={formData.email} onChange={handleChange} />
+                </div>
+                <div className='input'>
+                    <input type='password' name='password' placeholder='Password' value={formData.password} onChange={handleChange} />
+                </div>
+                {errorMessage && <p className="error-message" style={{ color: 'red' }}>{errorMessage}</p>}
+                <div className='submit_container'>
+                    <button type='submit' className='Submit'>Sign up</button>
+                </div>
+            </form>
         </div>
-        <form className='inputs' onSubmit={handleSubmit}>
-            <div className='input'>
-                <input type='text' name='username' placeholder='Username' value={formData.username} onChange={handleChange} />
-            </div>
-            <div className='input'>
-                <input type='email' name='email' placeholder='Email' value={formData.email} onChange={handleChange} />
-            </div>
-            <div className='input'>
-                <input type='password' name='password' placeholder='Password' value={formData.password} onChange={handleChange} />
-            </div>
-            {errorMessage && <p className="error-message" style={{ color: 'red' }}>{errorMessage}</p>}
-            <div className='submit_container'>
-                <button type='submit' className='Submit'>Sign up</button>
-            </div>
-        </form>
-    </div>
-  )
+    )
 }
 
 export default SignUp;

@@ -4,12 +4,23 @@ import { Navbar } from "../Components/Navbar";
 import { SearchBar } from "../Components/SearchBar";
 import { CartContext } from "../Components/CartContext";
 const server = 'http://127.0.0.1:5000';
+/**
+ * page component for showing items in the Children's section
+ * 
+ * this componet grabs data from the server realatedto children's items and shows them
+ * user can see details of each item, add items to their cart, and move to the item's page
+ * 
+ * @component
+ * @returns {JSX.Element} the JSX depiction of the childrens section webpage
+ 
+ */
 
 function Men() {
+  // grabbing initial data and accesing addToCart function from CartContext
   console.log("Men component rendered");
   const [initialData, setInitialData] = useState([]);
   const { addToCart } = useContext(CartContext);
-
+  // grabbing data from the server when the component mounts
   useEffect(() => {
     fetch(server + '/api/listing')
       .then(response => response.json())
@@ -17,22 +28,23 @@ function Men() {
       .catch(error => console.error("Error fetching data:", error, error.message, error.stack));
   }, []);
 
+  //removing items for mens section
   const menItems = initialData.filter(item => item.category === "Children");
-
+  //function to control adding items to cart
   const handleAddToCart = (item) => {
     if (item) {
       addToCart(item);
-      alert("Item added to cart!"); 
+      alert("Item added to cart!");
     }
   };
 
   return (
-    <React.Fragment> 
+    <React.Fragment>
       <Navbar />
-      <div className="App"> 
+      <div className="App">
         <div className="search-bar-holder">
-          <SearchBar  />
-        </div>  
+          <SearchBar />
+        </div>
         <div className="form-container">
           <div className="sell-heading">
             <h1>Welcome to the Children's section</h1>
@@ -58,7 +70,7 @@ function Men() {
           ))}
         </div>
       </div>
-      <footer/> 
+      <footer />
     </React.Fragment>
   );
 }
